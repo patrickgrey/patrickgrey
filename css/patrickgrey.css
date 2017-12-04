@@ -1,0 +1,70 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    font-family: Helvetica, Arial, freesans, sans-serif;
+    font-size: 150%;
+    background: #fefefe;
+    color: #333;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    /* Set the hr color */
+    background-color: #333; /* Modern Browsers */
+}
+
+.pg-accessible-hide-visual { 
+    position: absolute; 
+    overflow: hidden; 
+    clip: rect(0 0 0 0); 
+    height: 1px; width: 1px; 
+    margin: -1px; padding: 0; border: 0; 
+  }
+
+.pg-about {
+    position: fixed;
+    margin-top: -0.5rem;
+    width: 40%;
+    max-width: 20rem;
+    margin-left: 1rem;
+    font-size: 1rem;
+}
+
+.pg-hello {
+    font-size: 7rem;
+    font-weight: bolder;
+    margin: 0;
+}
+
+.pg-hello-fullstop {
+    position: relative;
+    height: 5rem;
+}
+
+.pg-hello-fullstop::before {
+    content: '';
+    position: absolute;
+    top: 5.3rem;
+    left: 0.45rem;
+    display: block;
+    width: 0.45rem;
+    height: 0.45rem;
+    background: rgb(255,255,0);
+    border: solid 0.30rem #444;
+}
+
+.pg-posts {
+    width: 60%;
+    max-width: 30rem;
+    margin: 0.5rem 0 0 auto;
+}
+
+.pg-post {
+    margin-bottom: 2rem;
+}
+
+.pg-post h1 {
+    margin-top: 0;
+    margin-bottom: 0.7rem;
+}
