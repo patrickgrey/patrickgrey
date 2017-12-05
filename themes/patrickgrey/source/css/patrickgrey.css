@@ -8,16 +8,6 @@ html, body {
     color: #333;
 }
 
-
-@media (min-width: 1420px) { 
-
-    html, body {
-        font-size: 130%;
-        line-height: 1.9rem;
-    }
-
-}
-
 a {
     overflow-wrap: break-word;
     word-wrap: break-word;
@@ -57,32 +47,13 @@ hr {
     /* font-size: 1rem; */
 }
 
-@media (min-width: 1420px) { 
-    
-    .pg-about {
-        position: fixed;
-        margin-top: -0.5rem;
-        width: 40%;
-        max-width: 25rem;
-        margin-left: 1rem;
-        /* font-size: 1rem; */
-    }
-    
-}
+
 
 .pg-hello {
     font-size: 30vw;
     /* line-height: 6rem; */
     font-weight: bolder;
     margin: 0;
-}
-
-@media (min-width: 600px) { 
-    
-    .pg-hello {
-        font-size: 7rem;
-    }
-    
 }
 
 .pg-hello-fullstop {
@@ -109,21 +80,60 @@ hr {
     /* margin: 1rem 1.5rem 2rem auto; */
 }
 
-@media (min-width: 1420px) { 
+.pg-post {
+    margin-bottom: 2rem;
+}
+
+.pg-blog-list-title {
+    margin-top: 0;
+    margin-bottom: 0.7rem;
+}
+
+@media (min-width: 600px) { 
     
+    .pg-hello {
+        font-size: 7rem;
+        line-height: 7rem;
+    }
+    
+}
+
+
+@media (min-width: 1420px) { 
+
+    html, body {
+        font-size: 130%;
+        line-height: 1.9rem;
+    }
+
+    .pg-container {
+        margin: 0;
+        max-width: 100%;
+        /* background: red; */
+    }
+    
+    .pg-about {
+        position: fixed;
+        margin-top: 0;
+        width: 40%;
+        max-width: 25rem;
+        margin-left: 1rem;
+        /* font-size: 1rem; */
+    }
+
+    .pg-hello {
+        /* margin: 1rem 0 3rem 0; */
+        /* margin-top: 0; */
+    }
+
+    .pg-blog-list-title {
+        margin-bottom: 4rem;
+    }
+
     .pg-posts {
         width: 60%;
         max-width: 35rem;
         margin: 1rem 1.5rem 2rem auto;
     }
     
-}
-
-.pg-post {
-    margin-bottom: 2rem;
-}
-
-.pg-post h1 {
-    margin-top: 0;
-    margin-bottom: 0.7rem;
 }
