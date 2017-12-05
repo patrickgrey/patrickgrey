@@ -1,7 +1,7 @@
 
 <% site.posts.sort('date', -1).limit(10).each(function(post){ %>
     <div class="pg-post">
-        <h1><%= post.title || '(no title)' %></h1>
+        <h2><%= post.title || '(no title)' %></h2>
         <p><%= post.date || '(no date)' %></p>
         <p><%- post.excerpt || '(no excerpt)' %></p>
         <a href="<%- url_for(post.path) %>">Go to post.</a>

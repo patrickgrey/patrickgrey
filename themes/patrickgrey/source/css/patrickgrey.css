@@ -2,9 +2,25 @@ html, body {
     padding: 0;
     margin: 0;
     font-family: Helvetica, Arial, freesans, sans-serif;
-    font-size: 150%;
+    font-size: 130%;
+    /* line-height: 1.9rem; */
     background: #fefefe;
     color: #333;
+}
+
+
+@media (min-width: 1420px) { 
+
+    html, body {
+        font-size: 130%;
+        line-height: 1.9rem;
+    }
+
+}
+
+a {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
 hr {
@@ -12,6 +28,16 @@ hr {
     height: 1px;
     /* Set the hr color */
     background-color: #333; /* Modern Browsers */
+}
+
+.pg-container {
+    margin: 1rem auto;
+    max-width: 32rem;
+    /* background: red; */
+}
+
+.pg-about, .pg-posts {
+    margin-left: 1rem;
 }
 
 .pg-accessible-hide-visual { 
@@ -23,21 +49,44 @@ hr {
   }
 
 .pg-about {
-    position: fixed;
-    margin-top: -0.5rem;
-    width: 40%;
-    max-width: 20rem;
-    margin-left: 1rem;
-    font-size: 1rem;
+    /* position: fixed; */
+    /* margin-top: -0.5rem; */
+    /* width: 40%; */
+    max-width: 25rem;
+    /* margin-left: 1rem; */
+    /* font-size: 1rem; */
+}
+
+@media (min-width: 1420px) { 
+    
+    .pg-about {
+        position: fixed;
+        margin-top: -0.5rem;
+        width: 40%;
+        max-width: 25rem;
+        margin-left: 1rem;
+        /* font-size: 1rem; */
+    }
+    
 }
 
 .pg-hello {
-    font-size: 7rem;
+    font-size: 30vw;
+    /* line-height: 6rem; */
     font-weight: bolder;
     margin: 0;
 }
 
+@media (min-width: 600px) { 
+    
+    .pg-hello {
+        font-size: 7rem;
+    }
+    
+}
+
 .pg-hello-fullstop {
+    color: white;
     position: relative;
     height: 5rem;
 }
@@ -55,9 +104,19 @@ hr {
 }
 
 .pg-posts {
-    width: 60%;
-    max-width: 35rem;
-    margin: 0.5rem 1.5rem 2rem auto;
+    /* width: 60%; */
+    /* max-width: 35rem; */
+    /* margin: 1rem 1.5rem 2rem auto; */
+}
+
+@media (min-width: 1420px) { 
+    
+    .pg-posts {
+        width: 60%;
+        max-width: 35rem;
+        margin: 1rem 1.5rem 2rem auto;
+    }
+    
 }
 
 .pg-post {
