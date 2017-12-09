@@ -11,6 +11,14 @@ html, body {
 a {
     overflow-wrap: break-word;
     word-wrap: break-word;
+    text-decoration: none;
+    background: black;
+    color: white;
+    padding: 0 3px;
+}
+
+a:hover, a:active, a:focus {
+    color: yellow;
 }
 
 hr {
