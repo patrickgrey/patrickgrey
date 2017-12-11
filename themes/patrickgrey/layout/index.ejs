@@ -7,7 +7,7 @@
                         
         <h1 class="pg-blog-list-title">Blog</h1>
 
-        <% site.posts.sort('date', -1).limit(10).each(function(post){ %>
+        <% site.posts.sort('date', -1).limit(100).each(function(post){ %>
             <div class="pg-post">
                 <h2 class="pg-post-title"><a class="pg-post-goto-link" href="<%- url_for(post.path) %>"><%= post.title || '(no title)' %></a></h2>
                 <p class="pg-post-date"><%= post.date.format('dddd, Do MMMM YYYY') || 'no date provided' %></p>

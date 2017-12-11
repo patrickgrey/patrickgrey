@@ -35,7 +35,8 @@ I've sketched out a roadmap of how I see this website progressing:
 
 0.0.3 Firebase hosting
 0.0.4 Continuous Dev Accessibility and performance audits
+0.0.5 Add search posts function
 
-Future posts will be shorter and more focusses. Sherry allowing.
+Future posts will be shorter and more focussed. Sherry allowing.
 
 The Source code for all this nonsense is here: [https://github.com/patrickgrey/patrickgrey](https://github.com/patrickgrey/patrickgrey)
