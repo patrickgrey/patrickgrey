@@ -135,6 +135,11 @@ hr {
     border-bottom: solid 5px #ccc;
     padding-bottom: 1rem;
     margin-bottom: 0;
+    line-height: 2.5rem;
+}
+
+.pg-post-goto-link {
+    
 }
 
 .pg-post-date {
@@ -221,3 +226,4 @@ hr {
     }
     
 }
+

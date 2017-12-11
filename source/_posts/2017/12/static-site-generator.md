@@ -1,5 +1,5 @@
 ---
-title: Here we go again!
+title: Here we go again! A cunning plan for a Generated Static website.
 date: 2017/12/10
 ---
 It&#39;s the build up to Christmas, hooray!! A special season when I get to stay up late and learn some new tech, sometime in between the pint of sherry kicking in and the kids waking up.
@@ -40,3 +40,6 @@ I've sketched out a roadmap of how I see this website progressing:
 Future posts will be shorter and more focussed. Sherry allowing.
 
 The Source code for all this nonsense is here: [https://github.com/patrickgrey/patrickgrey](https://github.com/patrickgrey/patrickgrey)
+
+TODO:
+- fork prism plugin and prevent CSS link injection so I can inline adjusted code for performance. Move prism plugin to scripts and comment out from package.
