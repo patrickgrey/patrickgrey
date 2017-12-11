@@ -6,6 +6,8 @@
 
     <h2 class="pg-post-title"><%= page.title %></h2>
 
+    <p class="pg-post-date"><%= page.date.format('dddd, Do MMMM YYYY') || 'no date provided' %></p>
+
     <%- page.content %></h2>
 
 

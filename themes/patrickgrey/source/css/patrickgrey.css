@@ -133,11 +133,13 @@ hr {
 
 .pg-post-title {
     border-bottom: solid 5px #ccc;
-    padding-bottom: 0.5rem;
+    padding-bottom: 1rem;
+    margin-bottom: 0;
 }
 
 .pg-post-date {
     font-size: 0.9rem;
+    margin-top: 0;
 }
 
 
