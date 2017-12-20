@@ -23,12 +23,13 @@ A few things I want to improve:
 
 ### patrickgrey.co.uk 2.0.0 - the Origin Story
 
-I've sketched out a roadmap of how I see this website progressing:
+I've sketched out a road-map of how I see this website progressing:
 
 0.0.1 Brutally simple website design &#9989;
 - Aiming for decent performance and accessibility audit scores.
 - Designed in the browser, mobile first.
 - CSS still took bloody ages. It's hard.
+- Favicon
 
 0.0.2 Set up a local Static Site Generator &#9989;
 - I like the speed and security aspects of this approach.
@@ -46,3 +47,4 @@ The Source code for all this nonsense is here: [https://github.com/patrickgrey/p
 
 TODO:
 - fork prism plugin and prevent CSS link injection so I can inline adjusted code for performance. Move prism plugin to scripts and comment out from package.
+- Write posts for 0.0.1 and 0.0.2!
