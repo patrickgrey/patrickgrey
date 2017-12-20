@@ -1,6 +1,7 @@
 ---
 title: Here we go again! A cunning plan for a Generated Static website.
 date: 2017/12/10
+description: An outline of a new website project and roadmap to reaching version 1.
 ---
 It&#39;s the build up to Christmas, hooray!! A special season when I get to stay up late and learn some new tech, sometime in between the pint of sherry kicking in and the kids waking up.
 
@@ -32,6 +33,8 @@ I've sketched out a roadmap of how I see this website progressing:
 0.0.2 Set up a local Static Site Generator &#9989;
 - I like the speed and security aspects of this approach.
 - I looked at [https://nuxtent.now.sh/guide](https://nuxtent.now.sh/guide) for a static blog generator but woah, that seems overly complicated for what it&#39;s meant to do. [https://hexo.io/](https://hexo.io/) is stable and quick for a simple blog.
+- Code formatting
+- Tag access?
 
 0.0.3 Firebase hosting
 0.0.4 Continuous Dev Accessibility and performance audits
