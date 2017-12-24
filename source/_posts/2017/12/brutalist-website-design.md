@@ -1,38 +1,18 @@
 ---
-title: Brutalist Website Design
+title: Brutally Simple Website Design
 date: 2017/12/11
 description: Notes on my approach to designing my site and the CSS implementation.
 ---
-Log into the console at: https://console.firebase.google.com
+My aim was to start with simple design that performs well. I used the Lighthouse (URL) chrome plugin to run a performance, SEO and accessibility audit.
 
-Add a new project. I like to give it a long enough title so that there isn't a randomly generated suffix. So, instead of patrickgrey-09CG5 I used patrickgrey-production.
+Image of Lighthouse test locally 
 
-Select the project and then hosting.
+This seems like a decent starting place. I'll aim to keep the scores around this as I add new features.
 
-Open terminal (http://cmder.net/ in my case) and enter
-```javascript
-npm install -g firebase-tools
-```
-Sign in to Google:
-```javascript
-firebase login
-```
-Initiate your project:
-```javascript
-firebase init
-```
-On init, you are guided through a wizard. Part of that is the generated content directory.
-Add your generated static files to your deploy directory (the default is public).
-Hexo usefully uses public as the generated content folder too! If your project outputs to a different directory, you can change it here.
-I do not wish to have a Single Page App (at this stage). So select No for this option and for overwriting the index.html file already there.
-Deploy your website:
-```javascript
-firebase deploy
-```
-I test the URL provided by Firebase (https://patrickgrey-production.firebaseapp.com/) and all is well.
+## Notes
 
-I ran lighthouse against the site and this seems to be a pretty solid base to start from.
+The layout was tricky. I used a mobile first approach which I've always found works well. One tricky bit was to have a fixed 'about' section on desktop but which appears at the top on the home page but at the bottom on a post page when viewed on mobile. This is where the static site generator came in handy because the same block of code can have a different class on different page types.
 
-IMAGE HERE.
+Cross-browser consistency was checked on Browserstack.
 
-The next step is to point my domain name to this hosting.
+I suspect there is a better, cleaner way to do this with Flex or Grid but I will modernise this in future. 

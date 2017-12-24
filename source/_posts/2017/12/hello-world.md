@@ -26,9 +26,6 @@ A few things I want to improve:
 I've sketched out a road-map of how I see this website progressing:
 
 0.0.1 Brutally simple website design &#9989;
-- Aiming for decent performance and accessibility audit scores.
-- Designed in the browser, mobile first.
-- CSS still took bloody ages. It's hard.
 - Favicon
 
 0.0.2 Set up a local Static Site Generator &#9989;
