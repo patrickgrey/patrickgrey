@@ -3,7 +3,7 @@ title: Brutally Simple Website Design
 date: 2017/12/11
 description: Notes on my approach to designing my site and the CSS implementation.
 ---
-My aim was to start with simple design that performs well. I used the Lighthouse (https://github.com/GoogleChrome/lighthouse) chrome plugin to run a performance, SEO and accessibility audit.
+My aim was to start with simple design that performs well. I used the [Lighthouse](https://github.com/GoogleChrome/lighthouse) chrome plugin to run a performance, SEO and accessibility audit.
 
 <img class="pg-image-post-full pg-image-post-border" src="/2017/12/brutalist-website-design/lighthouse-result-01.jpg">
 

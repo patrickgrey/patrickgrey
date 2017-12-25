@@ -22,17 +22,18 @@ A few things I want to explore in more depth:
 Courses I'm hoping to take:
 
 - [Wes Bos](http://wesbos.com/courses/) ES6 for Everyone
-- Ula
-- Vue school
+- [Modern DevTools](https://moderndevtools.com/)
+- [Vue school](https://vueschool.io/courses/the-vuejs-master-class) The Vue.js Master Class
 
-### patrickgrey.co.uk 2.0.0 - the Origin Story
+### patrickgrey.co.uk the Origin Story
 
 I've sketched out a road-map of how I see this website progressing:
 
-- [x] 0.0.1 Brutally simple website design
-- [x] 0.0.2 Set up a local Static Site Generator
-- [ ] 0.0.3 Firebase hosting
-- [ ] 0.0.4 Continuous Dev Accessibility and performance audits
-- [ ] 0.0.5 Add search posts function
+- [x] [0.0.0 Brutally simple website design](/2017/12/brutalist-website-design/)
+- [x] [0.1.0 Set up a local Static Site Generator](/2017/12/hexo-static-site-generator-setup/)
+- [ ] 0.2.0 Firebase hosting
+- [ ] 0.3.0 Continuous Dev Accessibility and performance audits
+- [ ] 0.4.0 Add search posts function
+- [ ] 0.5.0 Add offline capabilities
 
 The Source code for all this nonsense is here: [https://github.com/patrickgrey/patrickgrey](https://github.com/patrickgrey/patrickgrey)
