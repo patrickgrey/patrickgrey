@@ -1,5 +1,5 @@
 ---
-title: Here we go again! A cunning plan for a Generated Static website.
+title: A cunning plan for a new website.
 date: 2017/12/10
 description: An outline of a new website project and roadmap to reaching version 1.
 ---
@@ -9,39 +9,30 @@ I love restarting my website from scratch (again). A blank canvas. A chance to d
 
 ### A thirst for <span class="pg-strikethrough">sherry</span> knowledge
 
-A few things I want to learn:
+A few things I want to explore in more depth:
 
 - Vue.js
 - Progressive Web Apps
 - Continuous Delivery/Deployment
-
-A few things I want to improve:
 - Accessibility
 - Security
 - Visual code familiarity
 - Adobe After Effect - keeping my career options open :-)
 
+Courses I'm hoping to take:
+
+- [Wes Bos](http://wesbos.com/courses/) ES6 for Everyone
+- Ula
+- Vue school
+
 ### patrickgrey.co.uk 2.0.0 - the Origin Story
 
 I've sketched out a road-map of how I see this website progressing:
 
-0.0.1 Brutally simple website design &#9989;
-- Favicon
-
-0.0.2 Set up a local Static Site Generator &#9989;
-- I like the speed and security aspects of this approach.
-- I looked at [https://nuxtent.now.sh/guide](https://nuxtent.now.sh/guide) for a static blog generator but woah, that seems overly complicated for what it&#39;s meant to do. [https://hexo.io/](https://hexo.io/) is stable and quick for a simple blog.
-- Code formatting
-- Tag access?
-
-0.0.3 Firebase hosting
-0.0.4 Continuous Dev Accessibility and performance audits
-0.0.5 Add search posts function
-
-Future posts will be shorter and more focussed. Sherry allowing.
+- [x] 0.0.1 Brutally simple website design
+- [x] 0.0.2 Set up a local Static Site Generator
+- [ ] 0.0.3 Firebase hosting
+- [ ] 0.0.4 Continuous Dev Accessibility and performance audits
+- [ ] 0.0.5 Add search posts function
 
 The Source code for all this nonsense is here: [https://github.com/patrickgrey/patrickgrey](https://github.com/patrickgrey/patrickgrey)
-
-TODO:
-- fork prism plugin and prevent CSS link injection so I can inline adjusted code for performance. Move prism plugin to scripts and comment out from package.
-- Write posts for 0.0.1 and 0.0.2!

@@ -1,6 +1,6 @@
 ---
 title: Firebase hosting
-date: 2017/12/11
+date: 2017/12/13
 description: Steps involved in adding my website to firebase hosting.
 ---
 Log into the console at: https://console.firebase.google.com
