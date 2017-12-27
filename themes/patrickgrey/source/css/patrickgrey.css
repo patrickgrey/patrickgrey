@@ -299,6 +299,12 @@ hr {
     margin-bottom: 2.5rem;
 }
 
+.pg-goto-top {
+    float: right;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
 
 /* UTILITIES */
 
