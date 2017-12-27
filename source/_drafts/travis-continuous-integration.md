@@ -8,8 +8,9 @@ https://github.com/ebidel/lighthouse-ci
 https://docs.travis-ci.com/user/deployment/firebase/
 https://github.com/GoogleChrome/puppeteer
 http://kflu.github.io/2017/01/03/2017-01-03-hexo-travis/
+https://medium.com/@jamzi/continuous-everything-with-angular-travis-ci-firebase-and-greenkeeper-6656543bd826
 
-By reading Travis documents, the service copies the repo, builds the hexo account and runs tests, just as you would locally using your command line. It can also be used to deploy to Firebase. I'll start with a simple build success then add deploy to firebase then add tests and audits if I can.
+From reading the Travis documents, I understand the service copies the repo, builds the hexo website and runs tests, just as you would locally using your command line. It can also be used to deploy to Firebase or check dependencies with tools like Greenkeeper. I'll start with a simple build success then add deploy to firebase then add tests and audits if I can.
 
 - Sign up to Travis and allow it to access GitHub account.
 - Activate repository for website.
@@ -24,7 +25,9 @@ node_js:
 ```
 This runs the latest stable version of node and v8.
 
-Next I added more travis features:
+I push the change and check the https://travis-ci.org/ website and see that the build is running. How exciting!
+
+Next I added more travis features to install all node dependencies and run the hexo generate cli command:
 ```yaml
 branches:
   only:
@@ -33,4 +36,19 @@ install:
 - npm install
 script:
 - hexo generate
+```
+Now to try a firebase deploy which would finally make this service useful!! In order for Travis to deploy to Firebase, it needs a token for authorisation. The Travis docs recommend using firebase-tools to generate and then encrypt it using the Travis CLI. However, this is Ruby based and I am trying to stick to the node/windows environment only. Turns out I can add the token securely as an environment variable on the Travis build via the Travis website.
+
+So the steps are to run this to get the token.
+```yaml
+firebase login:ci
+```
+This opened a web page asking to give firebase CLI permission to do this. Once confirmed, a token is provided in the command line.
+
+In the setting section on the Travis website repo, I added the token to the Environment Variables section with the name FIREBASE_TOKEN.
+
+In .travis.yml I added:
+```yaml
+after_success:
+   - firebase deploy --token $FIREBASE_TOKEN
 ```
