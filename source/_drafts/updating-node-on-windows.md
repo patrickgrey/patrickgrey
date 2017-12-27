@@ -9,4 +9,3 @@ I looked up the [nvm GitHub page](https://github.com/creationix/nvm) and discove
 I downloaded the "nvm-setup" file and ran that. The wizard asks where the jode folder should be (C:\Program Files\nodejs). I wondered whether this would impact the currently installed version of node I have.
 
 After proceeding, it looks like NVM takes care of this. Nice!
-
