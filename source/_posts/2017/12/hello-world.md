@@ -32,7 +32,8 @@ I've sketched out a road-map of how I see this website progressing:
 - [x] [0.0.0 Brutally simple website design](/2017/12/brutalist-website-design/)
 - [x] [0.1.0 Set up a local Static Site Generator](/2017/12/hexo-static-site-generator-setup/)
 - [x] [0.2.0 Firebase hosting](/2017/12/firebase-hosting/)
-- [ ] 0.3.0 Continuous Dev Accessibility and performance audits
+- [ ] 0.3 Continuous Dev Accessibility and performance audits
+    - [x] [0.3.1 Firebase deploy via Travis](/2017/12/travis-continuous-integration/)
 - [ ] 0.4.0 Add search posts function
 - [ ] 0.5.0 Add basic testing
 - [ ] 0.6.0 Add offline capabilities

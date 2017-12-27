@@ -49,6 +49,8 @@ After two hours, the site was verified. I was then provided two *A records* (IP 
 
 When I finished the wizard, I was given the option to connect patrickgrey.co.uk as well so I guess Firebase is taking care of that!
 
+Edit: not entirely, I still need to set it up by adding two *A records* for patrickgrey.co.uk as well.
+
 Now when I visit www.patrickgrey.co.uk, I get a warning that the connection is not private. This is expected as the https certificate takes some time to be issued. Now I had to wait for the DNS to point to the correct hosting. 
 
 It worked! :-)
