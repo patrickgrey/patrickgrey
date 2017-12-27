@@ -5,7 +5,7 @@ description: Notes on my approach to designing my site and the CSS implementatio
 ---
 My aim was to start with simple design that performs well. I used the [Lighthouse](https://github.com/GoogleChrome/lighthouse) chrome plugin to run a performance, SEO and accessibility audit.
 
-<img class="pg-image-post-full pg-image-post-border" src="/2017/12/brutalist-website-design/lighthouse-result-01.jpg">
+<img class="pg-image-post-full pg-image-post-border" src="/2017/12/brutalist-website-design/lighthouse-result-01.jpg" alt="Results of Lighthouse performance and accessibility audit. Performance: 98, accessibility: 100, Best practices: 94, SEO: 100.">
 
 This seems like a decent starting point. I'll aim to keep the scores around this as I add new features.
 

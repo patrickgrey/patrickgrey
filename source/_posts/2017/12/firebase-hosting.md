@@ -35,9 +35,9 @@ Deploy your website:
 ```javascript
 firebase deploy
 ```
-I test the URL provided by Firebase (https://patrickgrey-production.firebaseapp.com/) and all is well. I also checked the scores on the doors with Lighthouse and were good - a couple of tweaks required and not an amazing achievement with such a simple site to be honest.
+I test the URL provided by Firebase (https://patrickgrey-production.firebaseapp.com/) and all is well. I also checked the scores on the doors with Lighthouse and were good - a couple of tweaks required and not an amazing achievement with such a simple site to be honest. Just noticed the accessibility score has dipped... as a result of not putting alt text in this image - more irony than Alanis Morissette (fixed in later releases of website).
 
-<img class="pg-image-post-full pg-image-post-border" style="max-width:593px;" src="/2017/12/firebase-hosting/hosted-lighthouse-audit.gif">
+<img class="pg-image-post-full pg-image-post-border" style="max-width:593px;" src="/2017/12/firebase-hosting/hosted-lighthouse-audit.gif" alt="Results of Lighthouse performance and accessibility audit. Performance: 97, accessibility: 94, Best practices: 94, SEO: 100.">
 
 The next step is to point my domain name to this hosting. I selected "Connect Domain" in the firebase hosting control panel. It asks for the name of the domain you wish to connect to. I included the www as I read this was a good thing somewhere, dunno where. Proper web dev knowledge that!
 
