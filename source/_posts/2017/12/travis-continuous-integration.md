@@ -52,7 +52,7 @@ after_success:
 
 It worked! :-) Well I never!
 
-Postscript: well, not quite. In the Travis log (very handy), it notes that the script load for primsjs.js failed as it couldn't find the module 'node-prismjs'. It works locally. Hmmmm. I think possibly because this dependency is missing from package.json. OK, getting somewhere. Looks like I need to add all dev dependencies for the script in package.json.
+Postscript: well, not quite. In the Travis log (very handy), it notes that the script load for primsjs.js failed as it couldn't find the module 'node-prismjs'. It works locally. Hmmmm. I think possibly because this dependency is missing from package.json. OK, getting somewhere. Looks like I need to add all dev dependencies for the script in package.json. Nope, now more problems. Might need to roll with the original plugin.
 
 References:
 
