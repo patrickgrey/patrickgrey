@@ -39,4 +39,6 @@ I've sketched out a road-map of how I see this website progressing:
 
 The Source code for all this nonsense is here: [https://github.com/patrickgrey/patrickgrey](https://github.com/patrickgrey/patrickgrey)
 
-TODO: Trim articles
+TODO:
+- Trim articles
+- Minify CSS
