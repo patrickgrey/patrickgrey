@@ -1,6 +1,6 @@
 ---
-title: Travis Continuous Integration with Hexo
-description: Steps to get Travis Continuous Integration up and running with my website.
+title: Travis Firebase deploy
+description: Steps to get Travis Continuous Integration up and running and deploying to Firebase.
 date: 2017-12-27 00:00:00
 tags:
 ---
@@ -52,7 +52,7 @@ after_success:
 
 It worked! :-) Well I never!
 
-Postscript: well, not quite. In the Travis log (very handy), it notes that the script load for primsjs.js failed as it couldn't find the module 'node-prismjs'. It works locally. Hmmmm. I think possibly because this dependency is missing from package.json. OK, getting somewhere. Looks like I need to add all dev dependencies for the script in package.json. Nope, now more problems. Might need to roll with the original plugin.
+Postscript: well, not quite. In the Travis log (very handy), it notes that the script load for primsjs.js failed as it couldn't find the module 'node-prismjs'. It works locally. Hmmmm. I think possibly because this dependency is missing from package.json. OK, getting somewhere. Looks like I need to add all dev dependencies for the script in package.json. Yes, npm install with --save-dev for all node modules mentioned in script fixes the issue! A lot of work but shouldn't have to revisit.
 
 References:
 

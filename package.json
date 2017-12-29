@@ -1,9 +1,12 @@
 {
-  "name": "hexo-site",
+  "name": "patrick-grey",
   "version": "0.0.0",
   "private": true,
   "hexo": {
     "version": "3.4.2"
+  },
+  "scripts": {
+    "lighthouse": "mocha tests/lighthouse-tests.js --timeout 15000"
   },
   "dependencies": {
     "hexo": "^3.2.0",
@@ -18,8 +21,11 @@
     "hexo-server": "^0.2.0"
   },
   "devDependencies": {
+    "chai": "^4.1.2",
     "dir-resolve": "^1.0.2",
     "hexo-fs": "^0.2.2",
+    "lighthouse": "^2.7.0",
+    "mocha": "^4.1.0",
     "node-prismjs": "^0.1.1",
     "path": "^0.12.7",
     "prism-themes": "^1.0.0",
