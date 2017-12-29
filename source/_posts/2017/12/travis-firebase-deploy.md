@@ -4,25 +4,29 @@ description: Steps to get Travis Continuous Integration up and running and deplo
 date: 2017-12-27 00:00:00
 tags:
 ---
-
-From reading the Travis documents, I understand the service copies the repo, builds the hexo website and runs tests, just as you would locally using your command line. It can also be used to deploy to Firebase or check dependencies with tools like Greenkeeper. I'll start with a simple build success then add deploy to firebase then add tests and audits if I can.
+Travis copies your repo, builds it based on your travis config file and runs any tests. If the build and tests pass, the deployment can happen.
 
 - Sign up to Travis and allow it to access GitHub account.
 - Activate repository for website.
 - Add a .travis.yml file to root.
 
-For the first test, I just added:
+.travis.yml v1:
 ```yaml
 language: node_js
 node_js:
+  - "8"
   - "iojs"
 ```
-This runs the latest stable version of node.
+This runs v8 of node and the latest stable version so you can see if you will have problems ahead.
 
-I push the change and check the https://travis-ci.org/ website and see that the build is running. How exciting!
+Push to github and check the https://travis-ci.org/.
 
-Next I added more travis features to install all node dependencies and run the hexo generate cli command:
+.travis.yml v2:
 ```yaml
+language: node_js
+node_js:
+  - "8"
+  - "iojs"
 branches:
   only:
   - master
@@ -34,18 +38,34 @@ install:
 script:
   - hexo generate
 ```
-Now to try a firebase deploy which would finally make this service useful!! In order for Travis to deploy to Firebase, it needs a token for authorisation. The Travis docs recommend using firebase-tools to generate and then encrypt it using the Travis CLI. However, this is Ruby based and I am trying to stick to the node/windows environment only. Turns out I can add the token securely as an environment variable on the Travis build via the Travis website.
+Only build on push to master, install dependencies and generate the site.
 
-So the steps are to run this to get the token.
+In order for Travis to deploy to Firebase, it needs a token for authorisation. The Travis docs recommend using firebase-tools to generate and then encrypt it using the Travis CLI. However, this is Ruby based and I am trying to stick to the node/windows environment only. Turns out I can add the token securely as an environment variable via the Travis website.
+
+Generate a token:
 ```yaml
 firebase login:ci
 ```
 This opened a web page asking to give firebase CLI permission to do this. Once confirmed, a token is provided in the command line.
 
-In the setting section on the Travis website repo, I added the token to the Environment Variables section with the name FIREBASE_TOKEN.
+Add the token to the Environment Variables section with the name FIREBASE_TOKEN.
 
-In .travis.yml I added:
+.travis.yml v3:
 ```yaml
+language: node_js
+node_js:
+  - "8"
+  - "iojs"
+branches:
+  only:
+  - master
+before_install:
+  - npm install -g firebase-tools
+  - npm install -g hexo
+install:
+  - npm install
+script:
+  - hexo generate
 after_success:
   - firebase deploy --token $FIREBASE_TOKEN
 ```
