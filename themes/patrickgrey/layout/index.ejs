@@ -7,13 +7,21 @@
                         
         <h1 class="pg-blog-list-title" id="blog">Blog</h1>
 
-        <div class="pg-search-posts-container">
+        <!-- <div class="pg-search-posts-container">
             <label for="pgSearchPosts">Search posts:</label>
-            <input id="pgSearchPosts" type="text" placeholder="Search posts" v-model="search">
-        </div>
+            <input id="pgSearchPosts" type="text" placeholder="Type here" v-model="search">
+        </div> -->
 
-        <div class="pg-posts-container-no-search" v-if="!search">
-            <p>No search</p>
+        <span class="input input--haruki" v-bind:class="{ 'input--filled': isSearching}">
+            <input class="input__field input__field--haruki" type="text" id="input-1" v-model="search" />
+            <label class="input__label input__label--haruki" for="input-1">
+                <span class="input__label-content input__label-content--haruki" v-if="!isSearching">Type to search posts</span>
+                <span class="input__label-content input__label-content--haruki" v-else>{{filteredList.length}} posts found</span>
+            </label>
+        </span>
+
+        <div class="pg-posts-container-no-search" v-if="!isSearching">
+            <!-- <p>No search</p> -->
             <% site.posts.sort('date', -1).limit(100).each(function(post){ %>
                 <div class="pg-post">
                     <h2 class="pg-post-title"><a class="pg-post-goto-link" href="<%- url_for(post.path) %>"><%= post.title || '(no title)' %></a></h2>
@@ -24,15 +32,14 @@
         </div>
 
         <div class="pg-posts-container-search" v-else>
-            <p>Is searching</p>
+            <!-- <p>Is searching</p> -->
             <div class="pg-post" v-for="post in filteredList">
                     <h2 class="pg-post-title"><a class="pg-post-goto-link" :href="post.slug">{{ post.title }}</a></h2>
-                    <p class="pg-post-date">{{ post.date | moment }}</p>
-                    
+                    <p class="pg-post-date">{{ post.date | moment }}</p>     
             </div>
         </div>
 
-        <a class="pg-goto-top" href="#blog">^ Go to top</a>
+        <a class="pg-goto-top" href="#blog" v-if="filteredList.length > 0">^ Go to top</a>
 
 
     </div> <!-- pg-posts -->
@@ -64,6 +71,9 @@
                     return this.posts.filter(post => {
                         return post.title.toLowerCase().includes(this.search.toLowerCase())
                     })
+                },
+                isSearching() {
+                    return this.search.length > 0;
                 }
             }
         })

@@ -16,4 +16,10 @@ Initially show last 10 posts. On search, hide this and show results.
 https://codepen.io/AndrewThian/pen/QdeOVa
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes#Polyfill
 
+https://markjs.io/
 
+Add count to under label or as part of label?
+
+https://tympanus.net/Development/TextInputEffects/
+
+This effect uses JS to make sure it doesn't revert if it has content. I need a conditional class with vue.
