@@ -13,3 +13,7 @@ https://gist.github.com/mh61503891/544d3c1eefd00b1012463b860222d34f
 
 Initially show last 10 posts. On search, hide this and show results.
 
+https://codepen.io/AndrewThian/pen/QdeOVa
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes#Polyfill
+
+

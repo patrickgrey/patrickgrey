@@ -18,7 +18,7 @@
         
         <div class="pg-post" v-for="post in posts">
                 <h2 class="pg-post-title"><a class="pg-post-goto-link" :href="post.slug">{{ post.title }}</a></h2>
-                <p class="pg-post-date">{{ post.date }}</p>
+                <p class="pg-post-date">{{ post.date | moment }}</p>
                 
         </div>
 
@@ -28,6 +28,8 @@
     </div> <!-- pg-posts -->
 
     <%- js('scripts/vue.js') %>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
     
     <script>
         var allPosts = {"posts": [
@@ -41,6 +43,11 @@
             data: {
                 message: 'Hello Vue!',
                 posts: allPosts.posts
+            },
+            filters: {
+                moment: function (date) {
+                    return moment(date).format('dddd, Do MMMM YYYY');
+                }
             }
         })
     </script>
