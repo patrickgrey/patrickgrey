@@ -15,16 +15,24 @@
             </div>
         <% }) %>
 
+        
+        <div class="pg-post" v-for="post in posts">
+                <h2 class="pg-post-title"><a class="pg-post-goto-link" :href="post.slug">{{ post.title }}</a></h2>
+                <p class="pg-post-date">{{ post.date }}</p>
+                
+        </div>
+
         <a class="pg-goto-top" href="#blog">^ Go to top</a>
+
 
     </div> <!-- pg-posts -->
 
     <%- js('scripts/vue.js') %>
     
     <script>
-        var allPosts = {"allPosts": [
+        var allPosts = {"posts": [
             <% site.posts.sort('date', -1).each(function(post){ %>
-                {title: "<%= post.title %>", slug: "<%= post.slug %>"},
+                {title: "<%= post.title %>", slug: "<%= post.slug %>", date: "<%= post.date %>" },
             <% }) %>      
         ]};
 
@@ -32,7 +40,7 @@
             el: '#posts',
             data: {
                 message: 'Hello Vue!',
-                allPosts: allPosts
+                posts: allPosts.posts
             }
         })
     </script>
