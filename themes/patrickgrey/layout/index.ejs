@@ -19,3 +19,21 @@
 
     </div> <!-- pg-posts -->
 
+    <%- js('scripts/vue.js') %>
+    
+    <script>
+        var allPosts = {"allPosts": [
+            <% site.posts.sort('date', -1).each(function(post){ %>
+                {title: "<%= post.title %>", slug: "<%= post.slug %>"},
+            <% }) %>      
+        ]};
+
+        var app = new Vue({
+            el: '#posts',
+            data: {
+                message: 'Hello Vue!',
+                allPosts: allPosts
+            }
+        })
+    </script>
+
