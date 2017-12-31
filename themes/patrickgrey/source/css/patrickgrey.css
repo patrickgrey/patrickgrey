@@ -455,7 +455,15 @@ hr {
 /* Haruki */
 
 .input--haruki {
-	margin: 0.5rem 0 1rem 0;
+	margin: 0.5rem 0 1.5rem 0;
+}
+
+@media (min-width: 600px) { 
+
+    .input--haruki {
+        /* margin: 0.5rem 0 2.5rem 0; */
+    }
+
 }
 
 .input__field--haruki {
