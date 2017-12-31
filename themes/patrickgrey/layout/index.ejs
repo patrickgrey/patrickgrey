@@ -13,7 +13,7 @@
         </div> -->
 
         <span class="input input--haruki" v-bind:class="{ 'input--filled': isSearching}">
-            <input class="input__field input__field--haruki" type="text" id="input-1" v-model="search" />
+            <input v-on:keyup="highlight($event)" class="input__field input__field--haruki" type="text" id="input-1" v-model="search" />
             <label class="input__label input__label--haruki" for="input-1">
                 <span class="input__label-content input__label-content--haruki" v-if="!isSearching">Type to search posts</span>
                 <span class="input__label-content input__label-content--haruki" v-else>{{filteredList.length}} posts found</span>
@@ -44,9 +44,11 @@
 
     </div> <!-- pg-posts -->
 
-    <%- js('scripts/vue.js') %>
+    <%- js('scripts/vue.min.js') %>
+    <%- js('scripts/mark.min.js') %>
+    <%- js('scripts/moment.min.js') %>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script> -->
     
     <script>
         var allPosts = {"posts": [
@@ -60,6 +62,15 @@
             data: {
                 search: '',
                 posts: allPosts.posts
+            },
+            methods: {
+                highlight: function (event) {
+                    var keyword = event.target.value;
+                    var markInstance = new Mark(document.querySelector(".pg-posts-container-search"));
+                    markInstance.unmark();
+                    markInstance.mark(keyword,{acrossElements: true});
+                    
+                }
             },
             filters: {
                 moment: function (date) {

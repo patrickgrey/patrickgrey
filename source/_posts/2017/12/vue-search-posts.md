@@ -18,6 +18,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 https://markjs.io/
 
+https://jsfiddle.net/HubertWang/t5ac1quc/
+
 Add count to under label or as part of label?
 
 https://tympanus.net/Development/TextInputEffects/
