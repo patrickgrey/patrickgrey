@@ -524,8 +524,23 @@ hr {
 	-webkit-transform: translate3d(0, 0.5em, 0);
 	transform: translate3d(0, 0.5em, 0);
 }
+
+[v-cloak] {
+  display: none;
+}
+
 /* 
-mark{
-    background: orange;
-    color: black;
+.pg-btn-posts-show-all {
+    cursor: pointer;
+    display: block;
+    margin-bottom: 3rem;
+    background: #666;
+    border: none;
+    padding: 1rem;
+    font-size: 1rem;
+    color: white;
+}
+
+.pg-btn-posts-show-all:hover {
+    background: black;
 } */
