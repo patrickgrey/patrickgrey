@@ -4,6 +4,12 @@ description: Steps to get Travis Continuous Integration up and running and deplo
 date: 2017-12-27 00:00:00
 tags:
 ---
+### Feature Aim
+Set up basic Continuous Integration to build on a push to github master branch and deploy to Firebase if successful. 
+
+### Development Notes
+I selected Travis over Jenkins as I didn't want to host my own service.
+
 Travis copies your repo, builds it based on your travis config file and runs any tests. If the build and tests pass, the deployment can happen.
 
 - Sign up to Travis and allow it to access GitHub account.

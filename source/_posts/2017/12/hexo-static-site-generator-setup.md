@@ -3,11 +3,14 @@ title: Hexo Static Site Generator Setup
 date: 2017/12/12
 description: The steps I took to set up Hexo.
 ---
-I like Static Site Generators. Performance and security.
+### Feature Aim
+Find a static site generator to deliver a simple list of posts on a secure, performant and accessible site that allows new features to be gradually integrated.
+
+### Development Notes
 
 I wanted a node-based CMS as it's a familiar environment.
 
-I looked at [https://nuxtent.now.sh/guide](https://nuxtent.now.sh/guide) for a static blog generator but woah, that seems overly complicated for what it&#39;s meant to do.
+I looked at [https://nuxtent.now.sh/guide](https://nuxtent.now.sh/guide) but woah, that seems overly complicated for what it&#39;s meant to do.
 
 I chose [https://hexo.io/](https://hexo.io/) as it is stable and quick to get started with for a simple blog. 
 

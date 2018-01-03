@@ -7,15 +7,81 @@
                         
         <h1 class="pg-blog-list-title" id="blog">Blog</h1>
 
-        <% site.posts.sort('date', -1).limit(100).each(function(post){ %>
-            <div class="pg-post">
-                <h2 class="pg-post-title"><a class="pg-post-goto-link" href="<%- url_for(post.path) %>"><%= post.title || '(no title)' %></a></h2>
-                <p class="pg-post-date"><%= post.date.format('dddd, Do MMMM YYYY') || 'no date provided' %></p>
-                
-            </div>
-        <% }) %>
+        <!-- <div class="pg-search-posts-container">
+            <label for="pgSearchPosts">Search posts:</label>
+            <input id="pgSearchPosts" type="text" placeholder="Type here" v-model="search">
+        </div> -->
 
-        <a class="pg-goto-top" href="#blog">^ Go to top</a>
+        <span class="input input--haruki" v-bind:class="{ 'input--filled': isSearching}">
+            <input v-on:keyup="highlight($event)" class="input__field input__field--haruki" type="text" id="input-1" v-model="search" />
+            <label class="input__label input__label--haruki" for="input-1">
+                <span class="input__label-content input__label-content--haruki" v-if="!isSearching">Type to search posts</span>
+                <span class="input__label-content input__label-content--haruki pg-hide" v-else v-cloak>{{filteredList.length}} posts found</span>
+            </label>
+        </span>
+
+        <div class="pg-posts-container-no-search" v-if="!isLoaded">
+            <!-- <p>No search</p> -->
+            <% site.posts.sort('date', -1).limit(10).each(function(post){ %>
+                <div class="pg-post">
+                    <h2 class="pg-post-title"><a class="pg-post-goto-link" href="<%- url_for(post.path) %>"><%= post.title || '(no title)' %></a></h2>
+                    <p class="pg-post-date"><%= post.date.format('dddd, Do MMMM YYYY') || 'no date provided' %></p>
+                    
+                </div>
+            <% }) %>
+        </div>
+
+        <div class="pg-posts-container-search"  v-cloak>
+            <!-- <p>Is searching</p> -->
+            <div class="pg-post" v-for="post in filteredList">
+                    <h2 class="pg-post-title"><a class="pg-post-goto-link" :href="post.slug">{{ post.title }}</a></h2>
+                    <p class="pg-post-date">{{ post.date }}</p>     
+            </div>
+        </div>
+
+        <a class="pg-goto-top" href="#blog" v-if="filteredList.length > 0">^ Go to top</a>
+
 
     </div> <!-- pg-posts -->
+
+    <%- js('scripts/vendors.min.js') %>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script> -->
+    
+    <script>
+        var allPosts = {"posts": [
+            <% site.posts.sort('date', -1).each(function(post){ %>
+                {title: "<%= post.title %>", slug: "<%= post.slug %>", date: "<%= post.date.format('dddd, Do MMMM YYYY') %>" },
+            <% }) %>      
+        ]};
+
+        var app = new Vue({
+            el: '#posts', // Only apply application to part of the static page.
+            data: {
+                search: '', //string typed in by user
+                isLoaded: true, //Boolean used to show/hide the static and vue lists of posts.
+                posts: allPosts.posts // All posts from JSON above.
+            },
+            methods: {
+                highlight: function (event) { // Highlight search term in search results
+                    // Get the container element of the search results.
+                    var markInstance = new Mark(document.querySelector(".pg-posts-container-search"));
+                    // Remove highlights applied on previous keyup
+                    markInstance.unmark();
+                    // Add highlight.
+                    markInstance.mark(this.search,{acrossElements: true});
+                }
+            },
+            computed: {
+                filteredList() { // Filter posts list based on search string 
+                    return this.posts.filter(post => {
+                        return post.title.toLowerCase().includes(this.search.toLowerCase())
+                    })
+                },
+                isSearching() { // Boolean. If not searching, add class to prevent input field effect from returning to non-searching state.
+                    return this.search.length > 0;
+                }
+            }
+        })
+    </script>
 

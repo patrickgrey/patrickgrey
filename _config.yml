@@ -90,3 +90,22 @@ prism_plugin:
   mode: 'preprocess'    # realtime/preprocess
   theme: 'hopscotch'
   line_number: false    # default false
+# JSON of all posts
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: false
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: false
+    tags: false

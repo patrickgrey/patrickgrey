@@ -3,7 +3,11 @@ title: Firebase hosting setup
 date: 2017/12/13
 description: Steps involved in adding my website to firebase hosting.
 ---
-These are notes I took when setting up hosting with Firebase. I chose firebase as it adds https://letsencrypt.org/ https certificate for free. The firebase client is also pretty handy.
+### Feature Aim
+Use Firebase to host my blog.
+
+### Development Notes
+I chose firebase as it adds https://letsencrypt.org/ https certificate for free. The firebase client is also pretty handy.
 
 Log into the console at: https://console.firebase.google.com
 
