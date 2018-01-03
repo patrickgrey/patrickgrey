@@ -87,9 +87,6 @@ Then add a small Vue app to part of the rendered page - hopefully the code comme
 </script>
 ```
 
-- Perf results
-- Browserstack
-- Check that search list is as expected once search removed.
 ### Research
 
 List all post titles and URLs in JSON just before main.js
