@@ -40,7 +40,7 @@ In a script block after this, I print out a JSON object containing all post titl
 <script>
     var allPosts = {"posts": [
         <% site.posts.sort('date', -1).each(function(post){ %>
-            {title: "<%= post.title %>", slug: "<%= post.slug %>", date: "<%= post.date %>" },
+            {title: "<%= post.title %>", slug: "<%= post.slug %>", date: "<%= post.date.format('dddd, Do MMMM YYYY') %>" },
         <% }) %>      
     ]};
 </script>
