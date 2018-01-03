@@ -4,9 +4,26 @@ description: Adding Vue to the template and creating an app as part of the page.
 date: 2017-12-30 00:00:00
 tags:
 ---
-In the unlikely event someone reads this blog, I'd guess they will land on the post they want via a search. However, just in case, I wanted to allow browsing of all posts. My aim was to have a list of all posts that could be filtered by typing into a search box.
+### Feature Aim
+Allow visitors to search through all posts by typing a string to search through titles.
 
- 
+### Development Notes
+In the unlikely event someone reads this blog, I'd guess they will land on the post they want via a search engine. However, visitors should be able to search posts and it's a fun feature to implement.
+
+I chose to develop with Vue.js as I wanted to better learn the framework.
+
+I'm only listing posts by title and date to force me to give them descriptive titles. It also means it's a very lightweight approach to having them on the page. This means I can possibly list all posts on one page without having to download too much HTML or encountering rendering issues.
+
+If I'm surprisingly prolific in my writing, I may have to change my approach - I know that mobile browsers can struggle with very long pages but at the moment, I think it's OK.
+
+I went through several user interface iterations, which started to add elements (like a 'Show All Posts' button). I eventually simplified things and, in my opinion, that gave the best user experience:
+
+- the static HTML page lists 10 posts.
+- a JSON object containing the titles, dates and slugs of all the posts is baked into the page by Hexo.
+
+
+
+
 
 I went through several increasingly complex user interface iterations before coming up with what seems to be a simpler solution.
 
