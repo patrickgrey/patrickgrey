@@ -35,7 +35,7 @@
             <!-- <p>Is searching</p> -->
             <div class="pg-post" v-for="post in filteredList">
                     <h2 class="pg-post-title"><a class="pg-post-goto-link" :href="post.slug">{{ post.title }}</a></h2>
-                    <p class="pg-post-date">{{ post.date | moment }}</p>     
+                    <p class="pg-post-date">{{ post.date }}</p>     
             </div>
         </div>
 
@@ -51,38 +51,34 @@
     <script>
         var allPosts = {"posts": [
             <% site.posts.sort('date', -1).each(function(post){ %>
-                {title: "<%= post.title %>", slug: "<%= post.slug %>", date: "<%= post.date %>" },
+                {title: "<%= post.title %>", slug: "<%= post.slug %>", date: "<%= post.date.format('dddd, Do MMMM YYYY') %>" },
             <% }) %>      
         ]};
 
         var app = new Vue({
-            el: '#posts',
+            el: '#posts', // Only apply application to part of the static page.
             data: {
-                search: '',
-                isLoaded: true,
-                posts: allPosts.posts
+                search: '', //string typed in by user
+                isLoaded: true, //Boolean used to show/hide the static and vue lists of posts.
+                posts: allPosts.posts // All posts from JSON above.
             },
             methods: {
-                highlight: function (event) {
-                    var keyword = event.target.value;
+                highlight: function (event) { // Highlight search term in search results
+                    // Get the container element of the search results.
                     var markInstance = new Mark(document.querySelector(".pg-posts-container-search"));
+                    // Remove highlights applied on previous keyup
                     markInstance.unmark();
-                    markInstance.mark(keyword,{acrossElements: true});
-                    
-                }
-            },
-            filters: {
-                moment: function (date) {
-                    return moment(date).format('dddd, Do MMMM YYYY');
+                    // Add highlight.
+                    markInstance.mark(this.search,{acrossElements: true});
                 }
             },
             computed: {
-                filteredList() {
+                filteredList() { // Filter posts list based on search string 
                     return this.posts.filter(post => {
                         return post.title.toLowerCase().includes(this.search.toLowerCase())
                     })
                 },
-                isSearching() {
+                isSearching() { // Boolean. If not searching, add class to prevent input field effect from returning to non-searching state.
                     return this.search.length > 0;
                 }
             }
