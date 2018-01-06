@@ -73,20 +73,22 @@
                 }
             },
             computed: {
-                filteredList() { // Filter posts list based on search string 
+                filteredList: function() { // Filter posts list based on search string 
+                    console.log(this.isSearching);
+                    var that = this;
                     if(this.isSearching) {
                         gtag('event', 'search', {
-                            search_term: this.search
+                            search_term: that.search
                         });
-                        return this.posts.filter(post => {
-                            return post.title.toLowerCase().includes(this.search.toLowerCase())
-                        })
+                        return that.posts.filter(function (post) {
+                            return post.title.toLowerCase().indexOf(that.search.toLowerCase()) >= 0;
+                        });
                     }
                     else {
                         return this.posts;
                     }
                 },
-                isSearching() { // Boolean. If not searching, add class to prevent input field effect from returning to non-searching state.
+                isSearching: function() { // Boolean. If not searching, add class to prevent input field effect from returning to non-searching state.
                     return this.search.length > 0;
                 }
             }
