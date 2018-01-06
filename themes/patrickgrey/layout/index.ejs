@@ -75,6 +75,9 @@
             computed: {
                 filteredList() { // Filter posts list based on search string 
                     if(this.isSearching) {
+                        gtag('event', 'search', {
+                            search_term: this.search
+                        });
                         return this.posts.filter(post => {
                             return post.title.toLowerCase().includes(this.search.toLowerCase())
                         })
