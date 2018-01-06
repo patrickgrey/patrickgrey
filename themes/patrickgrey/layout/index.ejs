@@ -65,18 +65,23 @@
             methods: {
                 highlight: function (event) { // Highlight search term in search results
                     // Get the container element of the search results.
-                    var markInstance = new Mark(document.querySelector(".pg-posts-container-search"));
+                    // var markInstance = new Mark(document.querySelector(".pg-posts-container-search"));
                     // Remove highlights applied on previous keyup
-                    markInstance.unmark();
+                    // markInstance.unmark();
                     // Add highlight.
-                    markInstance.mark(this.search,{acrossElements: true});
+                    // markInstance.mark(this.search,{acrossElements: true});
                 }
             },
             computed: {
                 filteredList() { // Filter posts list based on search string 
-                    return this.posts.filter(post => {
-                        return post.title.toLowerCase().includes(this.search.toLowerCase())
-                    })
+                    if(this.isSearching) {
+                        return this.posts.filter(post => {
+                            return post.title.toLowerCase().includes(this.search.toLowerCase())
+                        })
+                    }
+                    else {
+                        return this.posts;
+                    }
                 },
                 isSearching() { // Boolean. If not searching, add class to prevent input field effect from returning to non-searching state.
                     return this.search.length > 0;
