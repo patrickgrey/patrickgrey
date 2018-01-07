@@ -34,7 +34,7 @@ I've sketched out a road-map of how I see this website progressing:
 - [x] [0.2.0 Firebase hosting](/2017/12/firebase-hosting/)
 - [x] [0.3.0 Firebase deploy via Travis](/2017/12/travis-firebase-deploy/)
 - [x] [0.4.0 Add search posts function](/2017/12/vue-search-posts/)
-- [ ] 0.5.0 Add basic testing
+- [x] [0.5.0 Testing with Puppeteer](/2018/01/testing-with-puppeteer/)
 - [ ] 0.6.0 Add offline capabilities
 
 The Source code for all this nonsense is here: [https://github.com/patrickgrey/patrickgrey](https://github.com/patrickgrey/patrickgrey)
