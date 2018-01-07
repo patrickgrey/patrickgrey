@@ -12,5 +12,26 @@ Install dependencies
 npm install --save-dev mocha chai puppeteer
 ```
 
+Add script to `package.json`.
+```javascript
+"scripts": {
+    "test": "mocha --recursive test"
+}
+```
+
+Add a dummy test to check all running as expected.
+```javascript
+const { expect } = require('chai');
+
+describe('sample test', function () {
+  it('should work', function () {
+    expect(true).to.be.true;
+  });
+});
+```
+Everything up to here was taken from the excellent article by @ankit_m linked below in the Research section.
+
+
+
 ### Research
 [https://medium.com/@ankit_m/ui-testing-with-puppeteer-and-mocha-part-1-getting-started-b141b2f9e21](https://medium.com/@ankit_m/ui-testing-with-puppeteer-and-mocha-part-1-getting-started-b141b2f9e21)
