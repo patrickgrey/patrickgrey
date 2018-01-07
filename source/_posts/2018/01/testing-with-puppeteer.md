@@ -9,7 +9,7 @@ Check that the 'About' section looks the same on the index and posts pages on bo
 ### Development Notes
 Install dependencies
 ```yaml
-npm install --save-dev mocha chai puppeteer
+npm install --save-dev mocha chai puppeteer lodash
 ```
 
 Add script to `package.json`.
