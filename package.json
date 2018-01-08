@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "3.4.2"
+    "version": "3.4.4"
   },
   "scripts": {
     "lighthouse": "mocha tests/lighthouse-tests.js --timeout 15000",
@@ -33,6 +33,7 @@
     "lighthouse": "^2.7.0",
     "lodash": "^4.17.4",
     "mocha": "^4.1.0",
+    "mocha-image-compare": "^1.0.3",
     "node-prismjs": "^0.1.1",
     "path": "^0.12.7",
     "prism-themes": "^1.0.0",
