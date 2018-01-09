@@ -1,13 +1,8 @@
-"use strict"
+// "use strict"
 
-const { expect } = require('chai');
+// const { expect } = require('chai');
 
-const mic = require('mocha-image-compare')({
-  report: '/about', // path to the report folder, default 
-                                    // is './report' 
-  threshold: 0.002, // default detection thresold, default is 0.001 
-  highlight: 'yellow' // image diff highlight color 
-});
+
 
 // https://github.com/syadykin/node-mocha-image-compare
 
@@ -19,16 +14,13 @@ const mic = require('mocha-image-compare')({
 // });
 
 
-describe('About: visual regression', function () {
+describe('About visual regression', function () {
   
   let page;
 
   before (async function () {
     page = await browser.newPage();
     await page.goto('http://localhost:4000');
-    const aboutElement = await page.$('.pg-about-container');
-    const screenshot = await aboutElement.screenshot({path: 'about-screenshot.png'});
-    await browser.close();
   });
 
   after (async function () {
@@ -36,25 +28,19 @@ describe('About: visual regression', function () {
   });
 
   it('should have the correct page title', async function () {
+    console.log(await browser.version());
     expect(await page.title()).to.eql('Patrick Grey: Web Development, E-learning & Motion Graphics');
+    // expect(true).to.be.true;
   });
 
-  // it('should have no change to about', function(done) {
-  //   var compare = mic.test(this);
-  //   // other stuff 
-  //   compare('/path/to/file/to/compare/with.jpg', buffer, done);
-  // });
+  it('should filter posts based on search input', async function () {
+    const INPUT_SELECTOR = '#searchInput01';
+    await page.waitFor(INPUT_SELECTOR);
+    expect(true).to.be.true;
+  });
+
+  // searchInput01
 
 
 
-  // it('should work', function (done) {
-  //   browser
-  //     .version()
-  //     .then(function (v) {
-  //       console.log(v);
-
-  //       expect(true).to.be.true;
-  //       done();
-  //     })
-  // });
 });

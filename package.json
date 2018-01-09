@@ -6,8 +6,6 @@
     "version": "3.4.4"
   },
   "scripts": {
-    "lighthouse": "mocha tests/lighthouse-tests.js --timeout 15000",
-    "pwmetrics": "pwmetrics --config=./tests/pwmetrics-config.js",
     "snyk-protect": "snyk protect",
     "prepublish": "npm run snyk-protect",
     "test": "mocha test/bootstrap.js --recursive test"
