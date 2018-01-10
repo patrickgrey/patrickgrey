@@ -47,34 +47,50 @@ describe('About visual regression', function () {
     const POST_TITLE_SELECTOR = 'pg-post-goto-link';
     // How I know that vue has initialised.
     await page.waitForSelector(VUE_POSTS_CONTAINER, {visible: true});
-    // Get first three letters of first post title
-    let searchTerm = await page.evaluate((sel) => {
-      return document.getElementsByClassName(sel)[0].innerHTML.substr(0,3);
+    
+    // Get all post titles
+    let allPostTitlesArray = await page.evaluate((sel) => {
+      let _allPostTitlesArray = [];
+      let allPostTitlesElementsArray = document.getElementsByClassName(sel);
+      for (let index = 0; index < allPostTitlesElementsArray.length; index++) {
+        _allPostTitlesArray.push(allPostTitlesElementsArray[index].innerHTML);
+      }
+      return _allPostTitlesArray;
     }, POST_TITLE_SELECTOR); 
+    
+    // Get search term based on first title.
+    let searchTerm = allPostTitlesArray[0].substr(0,3);
+    // console.log(allPostTitlesArray);
     // console.log(searchTerm);
+    // Count how many times the seachTerm should appear in posts
+    let searchTermCount = 0;
+    for (let index = 0; index < allPostTitlesArray.length; index++) {
+      let title = allPostTitlesArray[index].toLowerCase();
+      if(title.indexOf(searchTerm.toLowerCase()) >= 0) searchTermCount++;
+    }
+    // console.log(searchTermCount);
 
     await page.waitFor(INPUT_SELECTOR);
     await page.focus(INPUT_SELECTOR);
     await page.waitFor(100);
 
-    let totalListLength =  await page.evaluate((sel) => {
-      return document.getElementsByClassName(sel).length;
-    }, POST_SELECTOR);
-
-    console.log(totalListLength);
+    // Get the maximum number of filtered results possible
+    let totalListLength =  allPostTitlesArray.length;
 
     await page.type(INPUT_SELECTOR, searchTerm, { delay: 150 });
     await page.waitFor(100);
 
+    // Get the length of the filtered post list.
     let newListLength =  await page.evaluate((sel) => {
                         return document.getElementsByClassName(sel).length;
                       }, POST_SELECTOR);
-                      // console.log(await page.evaluate(() => a));
-    console.log(newListLength);
+
+
     // await page.screenshot({ path: 'test/search.png' });
     
-    expect(newListLength).to.be.at.least(1);
+    // expect(newListLength).to.be.at.least(1);
     expect(newListLength).to.be.lessThan(totalListLength);
+    expect(newListLength).to.equal(searchTermCount);
     // expect(true).to.be.true;
   });
 
