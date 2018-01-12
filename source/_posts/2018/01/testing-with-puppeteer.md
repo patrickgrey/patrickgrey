@@ -148,8 +148,8 @@ describe('Search function filters posts.', function () {
 Then the test run script is added to the `.travis.yml` file.
 ```yaml
 script:
-  - hexo generate
-  - npm test
+  - hexo run generate
+  - npm run test
 ```
 
 ### Research
