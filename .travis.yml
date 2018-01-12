@@ -12,6 +12,7 @@ install:
   - npm install
 script:
   - hexo generate
+  - npm run create-project-folders
   - npm run invite
   - npm run copy
   - npm run test

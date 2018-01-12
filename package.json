@@ -8,6 +8,7 @@
   "scripts": {
     "snyk-protect": "snyk protect",
     "prepublish": "npm run snyk-protect",
+    "create-project-folders": "npm mkdirp [invite, projects]",
     "invite": "cp -r invite/ public/invite/",
     "copy": "cp -r projects/ public/projects/",
     "test": "mocha test/bootstrap.js --recursive test"
@@ -33,6 +34,7 @@
     "hexo-fs": "^0.2.2",
     "lighthouse": "^2.7.0",
     "lodash": "^4.17.4",
+    "mkdirp": "^0.5.1",
     "mocha": "^4.1.0",
     "mocha-image-compare": "^1.0.3",
     "node-prismjs": "^0.1.1",
