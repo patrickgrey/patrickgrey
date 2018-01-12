@@ -20,7 +20,7 @@ describe('About visual regression', function () {
 
   before (async function () {
     page = await browser.newPage();
-    await page.goto('http://localhost:4000');
+    await page.goto('https://www.patrickgrey.co.uk/');
   });
 
   after (async function () {
@@ -86,7 +86,7 @@ describe('About visual regression', function () {
                       }, POST_SELECTOR);
 
 
-    // await page.screenshot({ path: 'test/search.png' });
+    await page.screenshot({ path: 'test/search.png' });
     
     // expect(newListLength).to.be.at.least(1);
     expect(newListLength).to.be.lessThan(totalListLength);

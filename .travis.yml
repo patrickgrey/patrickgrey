@@ -12,5 +12,8 @@ install:
   - npm install
 script:
   - hexo generate
+  - npm invite
+  - npm copy
+  - npm test
 after_success:
   - firebase deploy --token $FIREBASE_TOKEN
