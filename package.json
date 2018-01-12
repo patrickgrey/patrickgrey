@@ -8,8 +8,8 @@
   "scripts": {
     "snyk-protect": "snyk protect",
     "prepublish": "npm run snyk-protect",
-    "create-project-folders": "npm mkdirp [invite, projects]",
-    "copy": "cp  -r projects/ public/projects && cp -r invite/ public/invite",
+    "create-project-folders": "mkdirp public/invite public/projects",
+    "copy": "cp -r projects/ public/ && cp -r invite/ public/",
     "test": "mocha test/bootstrap.js --recursive test"
   },
   "dependencies": {
