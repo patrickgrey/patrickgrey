@@ -176,7 +176,6 @@ hr {
 
 /* UTILITIES END */
 
-
-
-
-
+.highlight {
+  background-color: yellow;
+}

@@ -13,7 +13,7 @@
         </div> -->
 
         <span class="input input--haruki" v-bind:class="{ 'input--filled': isSearching}">
-            <input v-on:keyup="highlight($event)" class="input__field input__field--haruki" type="text" id="searchInput01" v-model="search" />
+            <input class="input__field input__field--haruki" type="text" id="searchInput01" v-model="search" />
             <label class="input__label input__label--haruki" for="searchInput01">
                 <span class="input__label-content input__label-content--haruki" v-if="!isSearching">Type to search posts</span>
                 <span class="input__label-content input__label-content--haruki pg-hide" v-else v-cloak>{{filteredList.length}} posts found</span>
@@ -34,7 +34,7 @@
         <div class="pg-posts-container-search"  v-cloak>
             <!-- <p>Is searching</p> -->
             <div class="pg-post" v-for="post in filteredList">
-                    <h2 class="pg-post-title"><a class="pg-post-goto-link" :href="post.slug">{{ post.title }}</a></h2>
+                    <h2 class="pg-post-title"><a class="pg-post-goto-link" :href="post.slug" v-html="$options.filters.highlight(post.title, search)"></a></h2>
                     <p class="pg-post-date">{{ post.date }}</p>     
             </div>
         </div>
@@ -55,22 +55,24 @@
             <% }) %>      
         ]};
 
+                
+        // highlight filter
+        // https://github.com/vuejs/vue/issues/322
+        Vue.filter('highlight', function(words, query){
+            // console.log("query: "+query+": end.");
+           if (query === '') return words;
+            var iQuery = new RegExp(query, "ig");
+            return words.toString().replace(iQuery, function(matchedTxt,a,b){
+                return ('<span class=\'highlight\'>' + matchedTxt + '</span>');
+            });
+        });
+
         var app = new Vue({
             el: '#posts', // Only apply application to part of the static page.
             data: {
                 search: '', //string typed in by user
                 isLoaded: true, //Boolean used to show/hide the static and vue lists of posts.
                 posts: allPosts.posts // All posts from JSON above.
-            },
-            methods: {
-                highlight: function (event) { // Highlight search term in search results
-                    // Get the container element of the search results.
-                    // var markInstance = new Mark(document.querySelector(".pg-posts-container-search"));
-                    // Remove highlights applied on previous keyup
-                    // markInstance.unmark();
-                    // Add highlight.
-                    // markInstance.mark(this.search,{acrossElements: true});
-                }
             },
             computed: {
                 filteredList: function() { // Filter posts list based on search string 
@@ -80,6 +82,7 @@
                         gtag('event', 'search', {
                             search_term: that.search
                         });
+                        
                         return that.posts.filter(function (post) {
                             return post.title.toLowerCase().indexOf(that.search.toLowerCase()) >= 0;
                         });
