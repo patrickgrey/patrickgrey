@@ -14,7 +14,7 @@
 
         <span class="input input--haruki" v-bind:class="{ 'input--filled': isSearching}">
             <input v-on:keyup="highlight($event)" class="input__field input__field--haruki" type="text" id="searchInput01" v-model="search" />
-            <label class="input__label input__label--haruki" for="input-1">
+            <label class="input__label input__label--haruki" for="searchInput01">
                 <span class="input__label-content input__label-content--haruki" v-if="!isSearching">Type to search posts</span>
                 <span class="input__label-content input__label-content--haruki pg-hide" v-else v-cloak>{{filteredList.length}} posts found</span>
             </label>
