@@ -2,6 +2,8 @@
 title: A cunning plan for a new website.
 date: 2017/12/10
 description: An outline of a new website project and roadmap to reaching version 1.
+tags:
+- project
 ---
 It&#39;s the build up to Christmas, hooray!! A special season when I get to stay up late and learn some new tech, sometime in between the pint of sherry kicking in and the kids waking up.
 

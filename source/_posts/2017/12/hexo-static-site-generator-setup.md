@@ -2,6 +2,8 @@
 title: Hexo Static Site Generator Setup
 date: 2017/12/12
 description: The steps I took to set up Hexo.
+tags:
+- hexo
 ---
 ### Feature Aim
 Find a static site generator to deliver a simple list of posts on a secure, performant and accessible site that allows new features to be gradually integrated.

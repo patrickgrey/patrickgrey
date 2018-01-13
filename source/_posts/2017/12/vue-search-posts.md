@@ -3,6 +3,9 @@ title: Hexo search posts using Vue.js
 description: Adding Vue to the template and creating an app as part of the page.
 date: 2017-12-30 00:00:00
 tags:
+- vue
+- javascript
+- hexo
 ---
 ### Feature Aim
 Allow visitors to search through all posts by typing a string to search through titles.

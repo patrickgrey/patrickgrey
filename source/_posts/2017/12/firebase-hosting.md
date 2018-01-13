@@ -2,6 +2,8 @@
 title: Firebase hosting setup
 date: 2017/12/13
 description: Steps involved in adding my website to firebase hosting.
+tags:
+- firebase
 ---
 ### Feature Aim
 Use Firebase to host my blog.

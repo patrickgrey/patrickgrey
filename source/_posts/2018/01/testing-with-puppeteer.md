@@ -2,6 +2,13 @@
 title: Testing with Puppeteer
 date: 2018/01/07
 description: Notes on integrating puppeteer tests with the website.
+tags:
+- testing
+- mocha
+- chai
+- puppeteer
+- javascript
+- travis
 ---
 ### Feature Aim
 Check that the search function works as expected.

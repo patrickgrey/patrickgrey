@@ -2,9 +2,13 @@
 title: Brutally Simple Website Design
 date: 2017/12/11
 description: Notes on my approach to designing my site and the CSS implementation.
+tags:
+- design
+- hexo
+- lighthouse
 ---
 ### Feature Aim
-Create a simple, clear design that builds in better perfomance and accessibility.
+Create a simple, clear design that builds in better performance and accessibility.
 
 ### Development Notes
 I took a mobile first approach, which I've always found works well.

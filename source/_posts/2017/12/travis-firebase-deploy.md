@@ -3,6 +3,8 @@ title: Travis Firebase deploy
 description: Steps to get Travis Continuous Integration up and running and deploying to Firebase.
 date: 2017-12-27 00:00:00
 tags:
+- travis
+- firebase
 ---
 ### Feature Aim
 Set up basic Continuous Integration to build on a push to github master branch and deploy to Firebase if successful. 
