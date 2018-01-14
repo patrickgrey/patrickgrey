@@ -180,3 +180,5 @@ hr {
   color: black;
   background-color: yellow;
 }
+
+[v-cloak] {display: none}
