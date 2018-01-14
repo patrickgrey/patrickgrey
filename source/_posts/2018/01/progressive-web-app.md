@@ -14,7 +14,7 @@ Make the index page available offline and allow visitors to save posts offline.
 ### Development Notes
 - Save index offline
 - Allow cache to update when new posts are added.
-- Add button to save post offline
+- Add button to save post offline?
 
 First problem. Can't get manifest to load - note that I don't think it loads on desktop browsers but only on mobile. I had to clear the hexo database a couple of times and eventually it was found.
 
