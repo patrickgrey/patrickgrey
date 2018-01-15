@@ -1,5 +1,5 @@
 ---
-title: updating Node On Windows
+title: Updating Node On Windows
 tags: node
 ---
 I wanted to update Node on my Windows (10) machine. Searching took me to https://davidwalsh.name/nvm. Looks like a complete reinstallation might create problems on my PATH environment variable so I'd like to avoid that problem.

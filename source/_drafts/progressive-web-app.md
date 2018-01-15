@@ -1,6 +1,6 @@
 ---
 title: Making my website a Progressive Web App
-date: 2018/01/13
+date: 2018/01/15
 description: Making my website a Progressive Web App.
 tags:
 - javascript
@@ -22,5 +22,12 @@ So I offer visitors a button to save posts offline? The alternative is to just a
 
 However, I want visitors to know that they can access posts even if they don't have a signal. This is a design issue. My first approach will be to add a simple green block div with a tick, below the date, saying that post is available offline!
 
+#### Offline
+I know about [Workbox](https://developers.google.com/web/tools/workbox/) but I feel I should learn the basics before using a library.
+
 ### Research
-https://classroom.udacity.com/courses/ud899/
+- https://classroom.udacity.com/courses/ud899/
+- https://developers.google.com/web/tools/workbox/
+
+TODO:
+- Offline analytics?
