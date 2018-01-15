@@ -31,3 +31,5 @@ I know about [Workbox](https://developers.google.com/web/tools/workbox/) but I f
 
 TODO:
 - Offline analytics?
+- Add revisioning to service worker.
+- Set caching on firebase - max-age non-mutable content, short cache mutable.

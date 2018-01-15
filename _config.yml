@@ -20,7 +20,7 @@ permalink_defaults:
 
 # Directory
 source_dir: source
-public_dir: public
+public_dir: predistribution
 tag_dir: tags
 archive_dir: archives
 category_dir: categories
@@ -90,6 +90,7 @@ prism_plugin:
   mode: 'preprocess'    # realtime/preprocess
   theme: 'hopscotch'
   line_number: false    # default false
+  
 # JSON of all posts
 jsonContent:
   meta: false
@@ -109,3 +110,4 @@ jsonContent:
     excerpt: false
     categories: false
     tags: false
+
