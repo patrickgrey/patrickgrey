@@ -9,7 +9,7 @@ tags:
 - workbox
 ---
 ### Feature Aim
-Make the index page available offline and allow visitors to save posts offline.
+Make the index page available offline and allow visitors to save posts offline. Also, show a message if a page is not found offline.
 
 ### Development Notes
 - Save index offline
@@ -22,3 +22,5 @@ So I offer visitors a button to save posts offline? The alternative is to just a
 
 However, I want visitors to know that they can access posts even if they don't have a signal. This is a design issue. My first approach will be to add a simple green block div with a tick, below the date, saying that post is available offline!
 
+### Research
+https://classroom.udacity.com/courses/ud899/
