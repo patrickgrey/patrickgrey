@@ -40,3 +40,7 @@ I've sketched out a road-map of how I see this website progressing:
 - [ ] 0.6.0 Add offline capabilities
 
 The Source code for all this nonsense is here: [https://github.com/patrickgrey/patrickgrey](https://github.com/patrickgrey/patrickgrey)
+
+<!-- TODO:
+- only copy project files that have changed.
+ -->

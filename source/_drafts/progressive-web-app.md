@@ -33,3 +33,4 @@ TODO:
 - Offline analytics?
 - Add revisioning to service worker.
 - Set caching on firebase - max-age non-mutable content, short cache mutable.
+- Testing runs on full website that hasn't been updated yet!! Need to run local server?.
