@@ -81,7 +81,7 @@ describe('Search function filters posts.', function () {
   // Allow for longer test of a timeout error occurs.
   this.timeout(20000);
   let page;
-  // Open website in the headless browser
+  // Open website on localhost in the headless browser
   before (async function () {
     page = await browser.newPage();
     await page.goto('http://localhost:4000/');
@@ -152,11 +152,14 @@ describe('Search function filters posts.', function () {
   });
 ```
 
-Then the test run script is added to the `.travis.yml` file.
+Then the test run script is added to the `.travis.yml` file before I deploy to firebase.
 ```yaml
 script:
-  - hexo run generate
+  - hexo generate
+  - hexo serve -s
   - npm run test
+after_success:
+  - firebase deploy --token $FIREBASE_TOKEN
 ```
 
 ### Research

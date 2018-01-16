@@ -1,36 +1,18 @@
-// "use strict"
-
-// const { expect } = require('chai');
-
-
-
-// https://github.com/syadykin/node-mocha-image-compare
-
-// describe('sample test', function () {
-//   it('should work', function () {
-//     console.log(await browser.version());
-//     expect(true).to.be.true;
-//   });
-// });
-
-
-describe('Check that the search posts function returns expected posts.', function () {
+describe('Search function filters posts.', function () {
   this.timeout(20000);
   let page;
-
+  // Open website on localhost in the headless browser
   before (async function () {
     page = await browser.newPage();
     await page.goto('http://localhost:4000/');
   });
-
+  // Once done, close page.
   after (async function () {
     await page.close();
   });
-
+  // Simple test to check title
   it('should have the correct page title', async function () {
-    // console.log(await browser.version());
     expect(await page.title()).to.eql('Patrick Grey: Web Development, E-learning & Motion Graphics');
-    // expect(true).to.be.true;
   });
  
 // This test aims to check that the search input is working.
@@ -59,16 +41,13 @@ describe('Check that the search posts function returns expected posts.', functio
     }, POST_TITLE_SELECTOR); 
     
     // Get search term based on first title.
-    let searchTerm = allPostTitlesArray[0].substr(0,3);
-    // console.log(allPostTitlesArray);
-    // console.log(searchTerm);
+    let searchTerm = allPostTitlesArray[0].substr(0, 3);
     // Count how many times the seachTerm should appear in posts
     let searchTermCount = 0;
     for (let index = 0; index < allPostTitlesArray.length; index++) {
       let title = allPostTitlesArray[index].toLowerCase();
       if(title.indexOf(searchTerm.toLowerCase()) >= 0) searchTermCount++;
     }
-    // console.log(searchTermCount);
 
     await page.waitFor(INPUT_SELECTOR);
     await page.focus(INPUT_SELECTOR);
@@ -88,14 +67,8 @@ describe('Check that the search posts function returns expected posts.', functio
 
     await page.screenshot({ path: 'test/search.png' });
     
-    // expect(newListLength).to.be.at.least(1);
     expect(newListLength).to.be.lessThan(totalListLength);
     expect(newListLength).to.equal(searchTermCount);
-    // expect(true).to.be.true;
   });
-
-  // searchInput01
-
-
 
 });
