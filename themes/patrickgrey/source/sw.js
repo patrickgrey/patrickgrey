@@ -1,5 +1,5 @@
-var staticCacheName = 'couk-patrick-grey-2210-15-01-2018';
-
+var staticCacheName = 'couk-patrick-grey-2259-1-01-2018';
+//blah01
 self.addEventListener('install', function (event) {
     var urlsToCache = [
         '/',
@@ -23,12 +23,20 @@ self.addEventListener('install', function (event) {
     ];
 
     event.waitUntil(
-        caches.open(staticCacheName).then(function (cache) {
+        caches.open(staticCacheName).then(function(cache) {
             return cache.addAll(urlsToCache);
         })
     );
 });
 
+// Update service worker.
+// Change service worker to new version which gets new versions of files by renaming.
+// Create a new cache to put these into.
+// Delete old cache.
+    // activate event - once new sw activated
+        // This is time to delete old caches before new one is created for this sw.
+// SW only active when window closed or another page visited. We want to change that.
+// 
 self.addEventListener('activate', function (event) {
     event.waitUntil(
         caches.keys().then(function (cacheNames) {
@@ -56,4 +64,10 @@ self.addEventListener('fetch', function (event) {
         console.log('Oops', error);
     }
 
+});
+
+self.addEventListener('message', function (event) {
+    if (event.data.action == 'skipWaiting') {
+        self.skipWaiting();
+    }
 });
