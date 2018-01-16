@@ -84,7 +84,7 @@ describe('Search function filters posts.', function () {
   // Open website in the headless browser
   before (async function () {
     page = await browser.newPage();
-    await page.goto('https://www.patrickgrey.co.uk/');
+    await page.goto('http://localhost:4000/');
   });
   // Once done, close page.
   after (async function () {
@@ -160,4 +160,4 @@ script:
 ```
 
 ### Research
-[https://medium.com/@ankit_m/ui-testing-with-puppeteer-and-mocha-part-1-getting-started-b141b2f9e21](https://medium.com/@ankit_m/ui-testing-with-puppeteer-and-mocha-part-1-getting-started-b141b2f9e21)
+https://medium.com/@ankit_m/ui-testing-with-puppeteer-and-mocha-part-1-getting-started-b141b2f9e21

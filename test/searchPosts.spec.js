@@ -14,13 +14,13 @@
 // });
 
 
-describe('About visual regression', function () {
+describe('Check that the search posts function returns expected posts.', function () {
   this.timeout(20000);
   let page;
 
   before (async function () {
     page = await browser.newPage();
-    await page.goto('https://www.patrickgrey.co.uk/');
+    await page.goto('http://localhost:4000/');
   });
 
   after (async function () {

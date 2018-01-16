@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+ <html class="no-js" lang="en-GB">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Patrick Grey: Testing with Puppeteer</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Notes on integrating puppeteer tests with the website.">
+        <style>
+            body,html{padding:0;margin:0;font-family:Helvetica,Arial,freesans,sans-serif;font-size:130%;background:#fefefe;color:#333}[v-cloak]{display:none}a{overflow-wrap:break-word;word-wrap:break-word;text-decoration:none;background:#000;color:#fff;padding:0 3px}a.headerlink{background:0 0;padding:0;margin-top:3rem}h2,h3{color:#666}.pg-container{margin:1rem auto;max-width:32rem}.pg-about,.pg-post-about{max-width:25rem;margin-right:1rem}.pg-post-about{border-top:solid 1rem #eee;padding-top:1rem}.pg-about,.pg-post-about,.pg-posts{margin-left:1rem}.pg-accessible-hide-visual{position:absolute;overflow:hidden;clip:rect(0 0 0 0);height:1px;width:1px;margin:-1px;padding:0;border:0}.pg-hello{font-size:30vw;font-weight:bolder;margin:0}.input__field,.input__label{float:right;font-weight:700}.pg-hello-fullstop{color:#fff;font-size:1px;position:relative}.pg-hello-fullstop::before{content:'';position:absolute;top:-1rem;left:.45rem;display:block;width:.45rem;height:.45rem;background:#ff0;border:.3rem solid #444}.pg-posts{margin-bottom:4rem;margin-right:1rem}.pg-post-container{margin:0 auto}.pg-post{position:relative;margin-bottom:4rem}.pg-posts-back-to{text-align:right;margin-top:2rem;padding-top:1rem;padding-bottom:1rem;display:block}.pg-post-title{border-bottom:solid 5px #ccc;padding-bottom:1rem;margin-bottom:.5rem;line-height:2.5rem}.pg-post-date{font-size:.9rem;margin-top:0}.pg-blog-list-title{margin-top:4.5rem;margin-bottom:2.5rem}@media (min-width:600px){.pg-hello{font-size:7rem;line-height:7rem}}@media (min-width:1420px){.pg-about,.pg-post-about{position:fixed;overflow-y:auto;height:100%}body,html{font-size:130%;line-height:1.9rem}.pg-container{margin:0;max-width:100%}.pg-about{margin-top:0;width:40%;max-width:25rem;margin-left:1rem}.pg-post-about{top:2rem;border-top:none;padding-top:0}.pg-blog-list-title{margin-bottom:4rem;margin-top:2rem}.pg-posts{width:60%;max-width:35rem;margin:1rem 1.5rem 2rem auto}}.input{position:relative;z-index:1;display:inline-block;margin:1em;max-width:350px;width:calc(100% - 2em);vertical-align:top}.input__field{position:relative;display:block;padding:.8em;width:60%;border:none;border-radius:0;background:#f0f0f0;color:#aaa;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-appearance:none}.input__field:focus{outline:0}.input__label{display:inline-block;padding:0 1em;width:40%;color:#6a7989;font-size:70.25%;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.input__label-content{position:relative;display:block;padding:1.6em 0;width:100%}.input--haruki{margin:.5rem 0 1.5rem}@media (min-width:600px){.input--haruki{margin:.5rem 0 3.5rem}}.input__field--haruki{padding:.4em 0;width:100%;background:0 0;color:#666;font-size:2rem}.input__label--haruki{position:absolute;width:100%;text-align:left;pointer-events:none}.input__label-content--haruki{-webkit-transition:-webkit-transform .3s;transition:transform .3s}.input__label--haruki::after,.input__label--haruki::before{content:'';position:absolute;left:0;z-index:-1;width:100%;height:4px;background:#6a7989;-webkit-transition:-webkit-transform .3s;transition:transform .3s}.input__label--haruki::before{top:0}.input__label--haruki::after{bottom:0}.input--filled .input__label-content--haruki,.input__field--haruki:focus+.input__label--haruki .input__label-content--haruki{-webkit-transform:translate3d(0,-90%,0);transform:translate3d(0,-90%,0)}.input--filled .input__label--haruki::before,.input__field--haruki:focus+.input__label--haruki::before{-webkit-transform:translate3d(0,-.5em,0);transform:translate3d(0,-.5em,0)}.input--filled .input__label--haruki::after,.input__field--haruki:focus+.input__label--haruki::after{-webkit-transform:translate3d(0,.5em,0);transform:translate3d(0,.5em,0)}[v-cloak]{display:none}
+        </style>
+        <link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/images/favicon/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/images/favicon/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/images/favicon/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/images/favicon/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/images/favicon/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/images/favicon/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/images/favicon/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="/images/favicon/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+        <link rel="manifest" href="/manifest.json">
+        <meta name="msapplication-TileColor" content="#FFFFFF">
+        <meta name="msapplication-TileImage" content="/images/favicon/ms-icon-144x144.png">
+        <meta name="theme-color" content="#000000">
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-41706969-1"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-41706969-1');
+        </script>
+
+
+    </head>
+    <body>
+
+        <div class="pg-container">
+        
+            
+
+<div class="pg-posts" id="top">
+
+    <a class="pg-posts-back-to" href="/index.html">Back to blog list &nbsp;</a>
+
+    <h2 class="pg-post-title">Testing with Puppeteer</h2>
+
+    <p class="pg-post-date">Sunday, 7th January 2018</p>
+
+    <h3 id="Feature-Aim"><a href="#Feature-Aim" class="headerlink" title="Feature Aim"></a>Feature Aim</h3><p>Check that the search function works as expected.</p>
+<h3 id="Development-Notes"><a href="#Development-Notes" class="headerlink" title="Development Notes"></a>Development Notes</h3><p>Install dependencies</p>
+<pre class=" language-yaml"><code class="language-yaml">npm install <span class="token punctuation">-</span><span class="token punctuation">-</span>save<span class="token punctuation">-</span>dev mocha chai puppeteer lodash
+</code></pre>
+<p>Add script to <code>package.json</code>.</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token string">"scripts"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"test"</span><span class="token punctuation">:</span> <span class="token string">"mocha --recursive test"</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Add a dummy test in new file <code>/test/regression.spec.js</code> to check all running as expected.</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token punctuation">{</span> expect <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'chai'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">describe</span><span class="token punctuation">(</span><span class="token string">'sample test'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">it</span><span class="token punctuation">(</span><span class="token string">'should work'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">expect</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span>be<span class="token punctuation">.</span><span class="token boolean">true</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Now we add a <code>/test/bootstrap.js</code> file to set up some globally available variables and tidy up once we are done.</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> puppeteer <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'puppeteer'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span> expect <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'chai'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> _ <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'lodash'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> globalVariables <span class="token operator">=</span> _<span class="token punctuation">.</span><span class="token function">pick</span><span class="token punctuation">(</span>global<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'browser'</span><span class="token punctuation">,</span> <span class="token string">'expect'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// puppeteer options - headless and sloMo commented out for quick testing.</span>
+<span class="token keyword">const</span> opts <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// headless: false,</span>
+  <span class="token comment" spellcheck="true">// slowMo: 100,</span>
+  timeout<span class="token punctuation">:</span> <span class="token number">10000</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// expose variables</span>
+before <span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  global<span class="token punctuation">.</span>expect <span class="token operator">=</span> expect<span class="token punctuation">;</span>
+  global<span class="token punctuation">.</span>browser <span class="token operator">=</span> <span class="token keyword">await</span> puppeteer<span class="token punctuation">.</span><span class="token function">launch</span><span class="token punctuation">(</span>opts<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// close browser and reset global variables</span>
+after <span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  browser<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  global<span class="token punctuation">.</span>browser <span class="token operator">=</span> globalVariables<span class="token punctuation">.</span>browser<span class="token punctuation">;</span>
+  global<span class="token punctuation">.</span>expect <span class="token operator">=</span> globalVariables<span class="token punctuation">.</span>expect<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Everything up to here is a compact version of the excellent article by @ankit_m linked below in the Research section.</p>
+<p>The NPM scripts needs adjusted to:</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token string">"scripts"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"test"</span><span class="token punctuation">:</span> <span class="token string">"mocha test/bootstrap.js --recursive test"</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Finally we add the test to the search functionality. Initially I was going to hard code the search term in but that would be too fragile. I was also just going to test that the result was greater than 1 and less than the total posts. However, I wanted something more precise so I counted the matches to compare with the vue results.</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token function">describe</span><span class="token punctuation">(</span><span class="token string">'Search function filters posts.'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// Allow for longer test of a timeout error occurs.</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">timeout</span><span class="token punctuation">(</span><span class="token number">20000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> page<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">// Open website in the headless browser</span>
+  before <span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    page <span class="token operator">=</span> <span class="token keyword">await</span> browser<span class="token punctuation">.</span><span class="token function">newPage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">await</span> page<span class="token punctuation">.</span><span class="token function">goto</span><span class="token punctuation">(</span><span class="token string">'https://www.patrickgrey.co.uk/'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">// Once done, close page.</span>
+  after <span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">await</span> page<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">// Simple test to check title</span>
+  <span class="token function">it</span><span class="token punctuation">(</span><span class="token string">'should have the correct page title'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">expect</span><span class="token punctuation">(</span><span class="token keyword">await</span> page<span class="token punctuation">.</span><span class="token function">title</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span><span class="token function">eql</span><span class="token punctuation">(</span><span class="token string">'Patrick Grey: Web Development, E-learning &amp; Motion Graphics'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment" spellcheck="true">// This test aims to check that the search input is working.</span>
+  <span class="token comment" spellcheck="true">// Get count of total posts</span>
+  <span class="token comment" spellcheck="true">// Get first three letters of title of first post</span>
+  <span class="token comment" spellcheck="true">// Count all posts that include those letters.</span>
+  <span class="token comment" spellcheck="true">// Type those letters in.</span>
+  <span class="token comment" spellcheck="true">// Check that there is at least one post showing but less than original total.</span>
+  <span class="token comment" spellcheck="true">// Check that the post count equals the title check count.</span>
+  <span class="token function">it</span><span class="token punctuation">(</span><span class="token string">'Should filter posts based on search input'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> VUE_POSTS_CONTAINER <span class="token operator">=</span> <span class="token string">'.pg-posts-container-search'</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> INPUT_SELECTOR <span class="token operator">=</span> <span class="token string">'#searchInput01'</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> POST_SELECTOR <span class="token operator">=</span> <span class="token string">'pg-post'</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> POST_TITLE_SELECTOR <span class="token operator">=</span> <span class="token string">'pg-post-goto-link'</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// How I know that vue has initialised.</span>
+    <span class="token keyword">await</span> page<span class="token punctuation">.</span><span class="token function">waitForSelector</span><span class="token punctuation">(</span>VUE_POSTS_CONTAINER<span class="token punctuation">,</span> <span class="token punctuation">{</span>visible<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// Get all post titles</span>
+    <span class="token keyword">let</span> allPostTitlesArray <span class="token operator">=</span> <span class="token keyword">await</span> page<span class="token punctuation">.</span><span class="token function">evaluate</span><span class="token punctuation">(</span><span class="token punctuation">(</span>sel<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+      <span class="token keyword">let</span> _allPostTitlesArray <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+      <span class="token keyword">let</span> allPostTitlesElementsArray <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByClassName</span><span class="token punctuation">(</span>sel<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> index <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> index <span class="token operator">&lt;</span> allPostTitlesElementsArray<span class="token punctuation">.</span>length<span class="token punctuation">;</span> index<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        _allPostTitlesArray<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>allPostTitlesElementsArray<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">.</span>innerHTML<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> _allPostTitlesArray<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> POST_TITLE_SELECTOR<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+
+    <span class="token comment" spellcheck="true">// Get search term based on first title.</span>
+    <span class="token keyword">let</span> searchTerm <span class="token operator">=</span> allPostTitlesArray<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// Count how many times the seachTerm should appear in posts</span>
+    <span class="token keyword">let</span> searchTermCount <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> index <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> index <span class="token operator">&lt;</span> allPostTitlesArray<span class="token punctuation">.</span>length<span class="token punctuation">;</span> index<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">let</span> title <span class="token operator">=</span> allPostTitlesArray<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span>title<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>searchTerm<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span> searchTermCount<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">await</span> page<span class="token punctuation">.</span><span class="token function">waitFor</span><span class="token punctuation">(</span>INPUT_SELECTOR<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">await</span> page<span class="token punctuation">.</span><span class="token function">focus</span><span class="token punctuation">(</span>INPUT_SELECTOR<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">await</span> page<span class="token punctuation">.</span><span class="token function">waitFor</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// Get the maximum number of filtered results possible</span>
+    <span class="token keyword">let</span> totalListLength <span class="token operator">=</span>  allPostTitlesArray<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+
+    <span class="token keyword">await</span> page<span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span>INPUT_SELECTOR<span class="token punctuation">,</span> searchTerm<span class="token punctuation">,</span> <span class="token punctuation">{</span> delay<span class="token punctuation">:</span> <span class="token number">150</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">await</span> page<span class="token punctuation">.</span><span class="token function">waitFor</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// Get the length of the filtered post list.</span>
+    <span class="token keyword">let</span> newListLength <span class="token operator">=</span>  <span class="token keyword">await</span> page<span class="token punctuation">.</span><span class="token function">evaluate</span><span class="token punctuation">(</span><span class="token punctuation">(</span>sel<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+                        <span class="token keyword">return</span> document<span class="token punctuation">.</span><span class="token function">getElementsByClassName</span><span class="token punctuation">(</span>sel<span class="token punctuation">)</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+                      <span class="token punctuation">}</span><span class="token punctuation">,</span> POST_SELECTOR<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+    <span class="token keyword">await</span> page<span class="token punctuation">.</span><span class="token function">screenshot</span><span class="token punctuation">(</span><span class="token punctuation">{</span> path<span class="token punctuation">:</span> <span class="token string">'test/search.png'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">expect</span><span class="token punctuation">(</span>newListLength<span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span>be<span class="token punctuation">.</span><span class="token function">lessThan</span><span class="token punctuation">(</span>totalListLength<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">expect</span><span class="token punctuation">(</span>newListLength<span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span>searchTermCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Then the test run script is added to the <code>.travis.yml</code> file.</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">script</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> hexo run generate
+  <span class="token punctuation">-</span> npm run test
+</code></pre>
+<h3 id="Research"><a href="#Research" class="headerlink" title="Research"></a>Research</h3><p><a href="https://medium.com/@ankit_m/ui-testing-with-puppeteer-and-mocha-part-1-getting-started-b141b2f9e21" target="_blank" rel="noopener">https://medium.com/@ankit_m/ui-testing-with-puppeteer-and-mocha-part-1-getting-started-b141b2f9e21</a></p>
+
+
+    <a class="pg-goto-top" href="#top">^ Go to top</a>
+
+
+</div>
+
+<div class="pg-about-container pg-post-about">
+    
+    <p class="pg-hello">Hello<span class="pg-hello-fullstop">.</span></p>
+    <p>I'm Patrick Grey, a web developer working in <a href="https://www.google.co.uk/maps/place/Lochgilphead/@56.0404104,-5.4394255,15z/data=!3m1!4b1!4m5!3m4!1s0x48897893a53ec45f:0x4dd11a62ea56ff2f!8m2!3d56.038292!4d-5.4323449" onclick="trackOutboundLink('https://www.google.co.uk/maps/place/Lochgilphead/@56.0404104,-5.4394255,15z/data=!3m1!4b1!4m5!3m4!1s0x48897893a53ec45f:0x4dd11a62ea56ff2f!8m2!3d56.038292!4d-5.4323449'); return false;">Lochgilphead</a>, Scotland.</p>
+    <!-- <p> I learn by asking all the stupid questions.</p> -->
+    <hr>
+    <p>I dabble in web development, e&#8209;learning &amp; motion graphics.</p>
+    <p>Email me <a href="mailto:hi@patrickgrey.co.uk" onclick="trackOutboundLink('mailto:hi@patrickgrey.co.uk'); return false;">hi@patrickgrey.co.uk</a> or find me on Twitter: <a href="https://twitter.com/PatrickGreyCoUk" onclick="trackOutboundLink('https://twitter.com/PatrickGreyCoUk'); return false;">@PatrickGreyCoUk</a></p>
+
+
+    <script>
+        /**
+        * Function that tracks a click on an outbound link in Analytics.
+        * This function takes a valid URL string as an argument, and uses that URL string
+        * as the event label. Setting the transport method to 'beacon' lets the hit be sent
+        * using 'navigator.sendBeacon' in browser that support it.
+        */
+        var trackOutboundLink = function(url) {
+            gtag('event', 'click', {
+            'event_category': 'outbound',
+            'event_label': url,
+            'transport_type': 'beacon',
+            'event_callback': function(){document.location = url;}
+            });
+        }
+    </script>
+</div> <!-- pg-about -->
+
+        </div>
+
+        <link rel="stylesheet" href="/css/patrickgrey.min.css">
+        <script src="/scripts/main.js"></script>
+
+        <!-- 
+            TODOs:
+                - Ligthhouse badges
+         -->
+        
+        
+    </body>
+</html>

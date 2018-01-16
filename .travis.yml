@@ -17,6 +17,7 @@ script:
   - hexo generate
   - npm run create-project-folders
   - npm run copy
+  - hexo serve -s
   - npm run test
 after_success:
   - firebase deploy --token $FIREBASE_TOKEN
