@@ -1,5 +1,5 @@
-var staticCacheName = 'couk-patrick-grey-2259-1-01-2018';
-//blah01
+var staticCacheName = 'couk-patrick-grey-2320-1-01-2018';
+
 self.addEventListener('install', function (event) {
     var urlsToCache = [
         '/',

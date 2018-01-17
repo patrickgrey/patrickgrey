@@ -81,6 +81,12 @@ theme: patrickgrey
 deploy:
   type:
 
+# Server
+## Hexo uses Connect as a server
+## You can customize the logger format as defined in
+## http://www.senchalabs.org/connect/logger.html
+port: 4000
+
 # Browsersynch
 browsersync:
   notify: false

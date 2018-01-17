@@ -33,3 +33,5 @@ TODO:
 - Offline analytics?
 - Add revisioning to service worker.
 - Set caching on firebase - max-age non-mutable content, short cache mutable.
+- https://developers.google.com/web/ilt/pwa/lab-caching-files-with-service-worker 
+- https://github.com/google-developer-training/pwa-training-labs.git 
