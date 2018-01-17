@@ -192,7 +192,7 @@ The script section of the file was updated to deploy some project folders that I
 
 `npm run copy`copies my non-Hexo projects from the root folder to the deploy folder.
 
-`firebase deploy -P staging --token $FIREBASE_TOKEN` deploys to my staging server using the staging alias. See [here](https://firebase.googleblog.com/2016/07/deploy-to-multiple-environments-with.html) for more details on that.
+`firebase deploy -P staging --token $FIREBASE_TOKEN` deploys to my staging server using the staging alias. See [here "Firebase blog page on deploying to multiple environments."](https://firebase.googleblog.com/2016/07/deploy-to-multiple-environments-with.html) for more details on that.
 
 The test, `npm run test` runs agains the staging server. If all is OK with the test, I switch firebase context to my production server and deploy.
 

@@ -180,3 +180,8 @@ hr {
   color: black;
   background-color: yellow;
 }
+
+/* Prism overwrite */
+.token.cdata, .token.comment, .token.doctype, .token.prolog {
+  color: #0099ff;
+}
