@@ -81,10 +81,12 @@ describe('Search function filters posts.', function () {
   // Allow for longer test of a timeout error occurs.
   this.timeout(20000);
   let page;
-  // Open website in the headless browser
+  // Open website on localhost in the headless browser
   before (async function () {
     page = await browser.newPage();
-    await page.goto('https://www.patrickgrey.co.uk/');
+    await page.goto('http://localhost:4000/');
+    // This was later updated to a staging server (below) for Travis deployment
+    // await page.goto('https://patrickgrey-staging.firebaseapp.com/');
   });
   // Once done, close page.
   after (async function () {
@@ -152,12 +154,47 @@ describe('Search function filters posts.', function () {
   });
 ```
 
-Then the test run script is added to the `.travis.yml` file.
+I updated my `.travis.yml` fileto be the following:
 ```yaml
+language: node_js
+node_js:
+  - "8"
+sudo: required
+addons:
+  chrome: stable
+branches:
+  only:
+    - master
+before_install:
+  - npm install -g firebase-tools
+  - npm install -g mocha
+  - npm install -g hexo
+install:
+  - npm install
 script:
-  - hexo run generate
+  - hexo generate
+  - npm run create-project-folders
+  - npm run copy
+  - firebase deploy -P staging --token $FIREBASE_TOKEN
   - npm run test
+after_success:
+  - firebase deploy -P default --token $FIREBASE_TOKEN
 ```
+The following section was required to get headless chrome to run on Travis.
+```yaml
+sudo: required
+addons:
+  chrome: stable
+```
+I added a staging website to Firebase at https://patrickgrey-staging.firebaseapp.com/. This allows me to run my tests against an actual website before deploying to my live website.
+
+The script section of the file was updated to deploy some project folders that I develop outside of Hexo. The folders are created with `npm run create-project-folders` which runs `"mkdirp public/projects"` in the `package.json` file.
+
+`npm run copy`copies my non-Hexo projects from the root folder to the deploy folder.
+
+`firebase deploy -P staging --token $FIREBASE_TOKEN` deploys to my staging server using the staging alias. See [here "Firebase blog page on deploying to multiple environments."](https://firebase.googleblog.com/2016/07/deploy-to-multiple-environments-with.html) for more details on that.
+
+The test, `npm run test` runs agains the staging server. If all is OK with the test, I switch firebase context to my production server and deploy.
 
 ### Research
-[https://medium.com/@ankit_m/ui-testing-with-puppeteer-and-mocha-part-1-getting-started-b141b2f9e21](https://medium.com/@ankit_m/ui-testing-with-puppeteer-and-mocha-part-1-getting-started-b141b2f9e21)
+https://medium.com/@ankit_m/ui-testing-with-puppeteer-and-mocha-part-1-getting-started-b141b2f9e21
