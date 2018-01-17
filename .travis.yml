@@ -17,7 +17,7 @@ script:
   - hexo generate
   - npm run create-project-folders
   - npm run copy
-  - hexo serve -s
+  - firebase deploy -P staging --token $FIREBASE_TOKEN
   - npm run test
 after_success:
-  - firebase deploy --token $FIREBASE_TOKEN
+  - firebase deploy -P default --token $FIREBASE_TOKEN

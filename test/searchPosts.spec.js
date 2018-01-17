@@ -4,7 +4,7 @@ describe('Search function filters posts.', function () {
   // Open website on localhost in the headless browser
   before (async function () {
     page = await browser.newPage();
-    await page.goto('http://localhost:4000/');
+    await page.goto('https://patrickgrey-staging.firebaseapp.com/');
   });
   // Once done, close page.
   after (async function () {
