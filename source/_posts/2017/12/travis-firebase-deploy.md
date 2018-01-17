@@ -7,7 +7,7 @@ tags:
 - firebase
 ---
 ### Feature Aim
-Set up basic Continuous Integration to build on a push to github master branch and deploy to Firebase if successful. 
+Set up basic Continuous Integration with testing to build on a push to github master branch and deploy to Firebase if successful. 
 
 ### Development Notes
 I selected Travis over Jenkins as I didn't want to host my own service.
@@ -56,7 +56,7 @@ firebase login:ci
 ```
 This opened a web page asking to give firebase CLI permission to do this. Once confirmed, a token is provided in the command line.
 
-Add the token to the Environment Variables section with the name FIREBASE_TOKEN.
+Add the token to the Travis website Environment Variables section with the name FIREBASE_TOKEN.
 
 .travis.yml v3:
 ```yaml
