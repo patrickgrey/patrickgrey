@@ -43,4 +43,5 @@ The Source code for all this nonsense is here: [https://github.com/patrickgrey/p
 
 <!-- TODO:
 - only copy project files that have changed.
+- add argyll to about
  -->
