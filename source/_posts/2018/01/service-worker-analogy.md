@@ -9,7 +9,7 @@ tags:
 ---
 <style>
 .pg-sw-analogy {
-  color: #FF69B4;
+  color: Fuchsia;
 }
 </style>
 
