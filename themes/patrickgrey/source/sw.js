@@ -8,7 +8,7 @@
     // TODO 7 - delete unused caches
 
 
-    var staticCacheName = 'couk-patrick-grey-2320-1-01-2018';
+    var staticCacheName = 'couk-grey-patrick-2320-1-01-2018';
     
     var urlsToCache = [
         '/',
@@ -48,9 +48,21 @@
                     return response;
                 }
                 console.log('Network request for ', event.request.url);
-                return fetch(event.request)
+                return fetch(event.request).then(function (response) {
 
-                // TODO 4 - Add fetched files to the cache
+                    if (response.status === 404) {
+                        return caches.match('projects/nopeNothingHereTotallyNonExistant.html');
+                    }
+
+                    return caches.open(staticCacheName).then(function (cache) {
+                        // if (event.request.url.indexOf('test') < 0) {
+                            cache.put(event.request.url, response.clone());
+                        // }
+                        return response;
+                    });
+                });
+
+                
 
             }).catch(function (error) {
 
@@ -75,7 +87,7 @@
             caches.keys().then(function (cacheNames) {
                 return Promise.all(
                     cacheNames.filter(function (cacheName) {
-                        return  cacheName.startsWith('couk-patrick-grey') &&
+                        return cacheName.startsWith('couk-grey-patrick') &&
                             cacheName != staticCacheName;
                     }).map(function  (cacheName) {
                         return caches.delete(cacheName);
