@@ -1,14 +1,31 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en-GB">
+<html class="no-js" lang="en-GB" dir="ltr">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <title>Patrick Grey:
         <%= page.title || config.title %>
     </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
     <meta name="description" content="<%= page.description || config.description %>">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:creator" content="@PatrickGreyCoUk">
+    <meta name="twitter:url" content="<%= page.permalink || config.url %>">
+    <meta name="twitter:title" content="<%= page.title || config.title %>">
+    <meta name="twitter:description" content="<%= page.description || config.description %>">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<%= page.permalink || config.url %>">
+    <meta property="og:title" content="<%= page.title || config.title %>">
+    <meta property="og:description" content="Description Here">
+    <meta property="og:site_name" content="Patrick Grey">
+    <meta property="og:locale" content="en_GB">
+
+
     <style>
         body,
         html {
@@ -331,6 +348,7 @@
     <meta name="msapplication-TileColor" content="#FFFFFF">
     <meta name="msapplication-TileImage" content="<%- url_for('/') %>images/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#000000">
+
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-41706969-1"></script>
