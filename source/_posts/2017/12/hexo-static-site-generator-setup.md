@@ -5,6 +5,9 @@ description: The steps I took to set up Hexo.
 tags:
 - hexo
 ---
+<figure>
+  <img class="pg-image-post-full pg-image-post-border" src="/2017/12/hexo-static-site-generator-setup/hexo.gif" alt="The Hexo logo.">
+</figure>
 ### Feature Aim
 Find a static site generator to deliver a simple list of posts on a secure, performant and accessible site that allows new features to be gradually integrated.
 
