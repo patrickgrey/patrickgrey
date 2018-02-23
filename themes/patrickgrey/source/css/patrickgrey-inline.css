@@ -30,6 +30,16 @@ h2, h3 {
     color: #666;
 }
 
+figure {
+    margin: 0;
+}
+
+figcaption {
+    color: #666;
+    font-size: 0.75em;
+    text-align: center;
+}
+
 .pg-container {
     margin: 1rem auto;
     max-width: 32rem;
