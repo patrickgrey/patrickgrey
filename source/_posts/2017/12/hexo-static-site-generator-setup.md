@@ -25,10 +25,12 @@ Creating a custom theme took a little reading of the docs but I mainly looked at
 
 My theme only really contains four template files in the layout folder:
 
-- layout.ejs: the top level template containing header, body and main container div
+- layout.ejs: the top level template containing header, body and main container div. I've inlined crucial CSS here and the rest goes in a link at the bottom with all the Javascript.
 - index.ejs: the landing page, including a list of posts
 - post.ejs: post content template
 - about.ejs: a &quot;partial&quot; or chunk of HTML that is reused in the index and post pages.
+
+You can find them here: https://github.com/patrickgrey/patrickgrey/tree/master/themes/patrickgrey/layout
 
 To keep my post files manageable, I've grouped posts into year and month folders. I was expecting issues with this but Hexo seems to handle it fine.
 
