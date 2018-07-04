@@ -10,7 +10,8 @@
     "prepublish": "npm run snyk-protect",
     "create-project-folders": "mkdirp public/invite public/projects",
     "copy": "cp -r projects/ public/ && cp -r invite/ public/",
-    "test": "mocha test/bootstrap.js --recursive test"
+    "test": "mocha test/bootstrap.js --recursive test",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "hexo": "^3.2.0",
@@ -25,7 +26,7 @@
     "hexo-renderer-marked": "^0.3.2",
     "hexo-renderer-stylus": "^0.3.1",
     "hexo-server": "^0.2.0",
-    "snyk": "^1.63.0"
+    "snyk": "^1.88.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
