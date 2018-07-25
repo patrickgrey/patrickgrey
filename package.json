@@ -10,7 +10,8 @@
     "prepublish": "npm run snyk-protect",
     "create-project-folders": "mkdirp public/invite public/projects",
     "copy": "cp -r projects/ public/ && cp -r invite/ public/",
-    "test": "mocha test/bootstrap.js --recursive test"
+    "test": "mocha test/bootstrap.js --recursive test",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "hexo": "^3.7.1",
