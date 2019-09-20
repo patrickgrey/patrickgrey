@@ -34,7 +34,7 @@
     "dir-resolve": "^1.0.2",
     "hexo-fs": "^0.2.2",
     "lighthouse": "^2.7.0",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.13",
     "mkdirp": "^0.5.1",
     "mocha": "^4.1.0",
     "mocha-image-compare": "^1.0.3",
