@@ -14,7 +14,7 @@
     "prepare": "npm run snyk-protect"
   },
   "dependencies": {
-    "hexo": "^3.7.1",
+    "hexo": "^6.0.0",
     "hexo-browsersync": "^0.3.0",
     "hexo-generator-archive": "^0.1.4",
     "hexo-generator-category": "^0.1.3",
