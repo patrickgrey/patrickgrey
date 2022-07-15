@@ -1,7 +1,3 @@
-.DS_Store
-Thumbs.db
-db.json
-*.log
+_site/
 node_modules/
-public/
-.deploy*/
+package-lock.json

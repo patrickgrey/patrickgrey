@@ -1,48 +1,37 @@
 {
   "name": "patrick-grey",
-  "version": "0.0.0",
-  "private": true,
-  "hexo": {
-    "version": "3.7.1"
-  },
+  "version": "1.0.0",
+  "description": "Personal blog.",
   "scripts": {
-    "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect",
-    "create-project-folders": "mkdirp public/invite public/projects",
-    "copy": "cp -r projects/ public/ && cp -r invite/ public/",
-    "test": "mocha test/bootstrap.js --recursive test",
-    "prepare": "npm run snyk-protect"
+    "build": "npx @11ty/eleventy",
+    "bench": "DEBUG=Eleventy:Benchmark* npx @11ty/eleventy",
+    "watch": "npx @11ty/eleventy --watch",
+    "serve": "npx @11ty/eleventy --serve",
+    "dev": "npx @11ty/eleventy --serve --incremental",
+    "debug": "DEBUG=* npx @11ty/eleventy"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/patrickgrey/patrickgrey.git"
+  },
+  "author": {
+    "name": "Patrick Grey",
+    "email": "websemantic@yahoo.co.uk",
+    "url": "https://patrickgrey.co.uk/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/patrickgrey/patrickgrey/issues"
+  },
+  "homepage": "https://github.com/patrickgrey/patrickgrey#readme",
   "dependencies": {
-    "hexo": "^3.7.1",
-    "hexo-browsersync": "^0.3.0",
-    "hexo-generator-archive": "^0.1.4",
-    "hexo-generator-category": "^0.1.3",
-    "hexo-generator-index": "^0.2.0",
-    "hexo-generator-json-content": "^3.0.1",
-    "hexo-generator-sitemap": "^1.2.0",
-    "hexo-generator-tag": "^0.2.0",
-    "hexo-renderer-ejs": "^0.3.0",
-    "hexo-renderer-marked": "^0.3.2",
-    "hexo-renderer-stylus": "^0.3.1",
-    "hexo-server": "^0.3.2",
-    "snyk": "^1.230.7"
-  },
-  "devDependencies": {
-    "chai": "^4.1.2",
-    "cpx": "^1.5.0",
-    "dir-resolve": "^1.0.2",
-    "hexo-fs": "^0.2.2",
-    "lighthouse": "^2.7.0",
-    "lodash": "^4.17.10",
-    "mkdirp": "^0.5.1",
-    "mocha": "^4.1.0",
-    "mocha-image-compare": "^1.0.3",
-    "node-prismjs": "^0.1.1",
-    "path": "^0.12.7",
-    "prism-themes": "^1.0.0",
-    "prismjs": "^1.9.0",
-    "puppeteer": "^1.6.1"
-  },
-  "snyk": true
+    "@11ty/eleventy": "^2.0.0-canary.12",
+    "@11ty/eleventy-navigation": "^0.3.3",
+    "@11ty/eleventy-plugin-rss": "^1.2.0",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^4.1.0",
+    "@11ty/eleventy-plugin-vite": "^2.0.0-canary.1",
+    "luxon": "^3.0.1",
+    "markdown-it": "^13.0.1",
+    "markdown-it-anchor": "^8.6.4"
+  }
 }

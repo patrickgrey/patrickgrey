@@ -1,6 +1,0 @@
-{
-  "projects": {
-    "default": "patrickgrey-production",
-    "staging": "patrickgrey-staging"
-  }
-}
