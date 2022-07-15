@@ -11,9 +11,9 @@ const EleventyVitePlugin = require("@11ty/eleventy-plugin-vite");
 
 module.exports = function (eleventyConfig) {
   // Copy the `img` and `css` folders to the output
-  eleventyConfig.addPassthroughCopy("img");
-  eleventyConfig.addPassthroughCopy("css");
-  eleventyConfig.addPassthroughCopy("fonts");
+  eleventyConfig.addPassthroughCopy("_src/img");
+  eleventyConfig.addPassthroughCopy("_src/css");
+  eleventyConfig.addPassthroughCopy("_src/fonts");
 
   // Add plugins
   eleventyConfig.addPlugin(pluginRss);
@@ -128,7 +128,7 @@ module.exports = function (eleventyConfig) {
 
     // These are all optional (defaults are shown):
     dir: {
-      input: ".",
+      input: "_src",
       includes: "_includes",
       data: "_data",
       output: "_site"
