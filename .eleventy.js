@@ -10,6 +10,8 @@ const pluginNavigation = require("@11ty/eleventy-navigation");
 const EleventyVitePlugin = require("@11ty/eleventy-plugin-vite");
 
 module.exports = function (eleventyConfig) {
+  // the default is "passthrough"
+  eleventyConfig.setServerPassthroughCopyBehavior("copy");
   // Copy the `img` and `css` folders to the output
   eleventyConfig.addPassthroughCopy("_src/img");
   eleventyConfig.addPassthroughCopy("_src/css");
