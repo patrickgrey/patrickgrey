@@ -65,6 +65,8 @@ header {
 
 /* https://dev.to/afif/how-to-correctly-position-rotated-text-using-css-1gjc */
 
+/* Change the corners to boxes with two sides bordered then
+I can have cross hatches at three corners plus the circle */
 .pg-home {
   transform-origin: top left;
   position: absolute;
@@ -77,27 +79,7 @@ header {
   font-family: var(--font-family-monospace);
   font-size: clamp(1rem, 0.273rem + 3.64vw, 3rem);
   /* border-right: 1px solid #999; */
-  border-bottom: 1px solid #999;
-}
-
-.pg-home::before {
-  content: "";
-  position: absolute;
-  top: -1px;
-  left: -10px;
-  width: calc(100% + 20px);
-  height: 1px;
-  border-top: 1px solid #999;
-}
-
-.pg-home::after {
-  content: "";
-  position: absolute;
-  top: -10px;
-  left: -1px;
-  height: calc(100% + 20px);
-  width: 1px;
-  border-left: 1px solid #999;
+  border: 1px solid #999;
 }
 
 .pg-home a {
@@ -107,6 +89,65 @@ header {
   text-decoration: none;
   padding: 0.5rem 1rem;
 }
+
+.pg-home::before,
+.pg-home::after,
+.pg-home > a::before,
+.pg-home > a::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 1px solid #999;
+}
+
+.pg-home::before {
+  top: -12px;
+  left: -12px;
+  border-left-color: transparent;
+  border-top-color: transparent;
+}
+
+.pg-home::after {
+  top: -12px;
+  right: -12px;
+  border-right-color: transparent;
+  border-top-color: transparent;
+}
+
+.pg-home > a::before {
+  bottom: -12px;
+  left: -12px;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+}
+
+.pg-home > a::after {
+  bottom: -12px;
+  right: -12px;
+  background-color: transparent;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #999;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.pg-home a:hover::after {
+  background-color: white;
+}
+
+/* .pg-home::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -1px;
+  height: calc(100% + 20px);
+  width: 1px;
+  border-left: 1px solid #999;
+}
+
+
 
 .pg-home a::before {
   content: "";
@@ -129,8 +170,4 @@ header {
   border: 1px solid #999;
   border-radius: 50%;
   transition: background-color 0.3s;
-}
-
-.pg-home a:hover::after {
-  background-color: dodgerblue;
-}
+}*/
