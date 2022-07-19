@@ -102,10 +102,10 @@ I can have cross hatches at three corners plus the circle */
 }
 
 .pg-home::before {
-  top: -12px;
+  bottom: -12px;
   left: -12px;
   border-left-color: transparent;
-  border-top-color: transparent;
+  border-bottom-color: transparent;
 }
 
 .pg-home::after {
@@ -116,10 +116,16 @@ I can have cross hatches at three corners plus the circle */
 }
 
 .pg-home > a::before {
-  bottom: -12px;
+  top: -12px;
   left: -12px;
-  border-left-color: transparent;
-  border-bottom-color: transparent;
+  /* border-left-color: transparent;
+  border-bottom-color: transparent; */
+  background-color: white;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #999;
+  border-radius: 50%;
+  transition: background-color 0.3s;
 }
 
 .pg-home > a::after {
@@ -131,6 +137,10 @@ I can have cross hatches at three corners plus the circle */
   border: 1px solid #999;
   border-radius: 50%;
   transition: background-color 0.3s;
+}
+
+.pg-home a:hover::before {
+  background-color: transparent;
 }
 
 .pg-home a:hover::after {
