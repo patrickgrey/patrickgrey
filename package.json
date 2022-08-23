@@ -33,7 +33,7 @@
   "homepage": "https://github.com/EUROCONTROL-IANS/_dev-template#readme",
   "devDependencies": {
     "@11ty/eleventy": "^1.0.0",
-    "@11ty/eleventy-img": "^1.0.0",
+    "@11ty/eleventy-img": "^1.1.0",
     "adm-zip": "^0.5.9",
     "autoprefixer": "^10.4.2",
     "clean-css": "^5.2.4",
