@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Style Guide</title>
+    <link rel="stylesheet" href="ians-styleguide.css"/>
+  </head>
+  <body class="relative">
+    <header class="ians-column-wide-1">
+      <p class="ians-breadcrumb">Subject name&nbsp;/&nbsp;Topic name&nbsp;/</p>
+      <h1>Style Guide</h1>
+    </header>
+    <main>
+      <div class="ians-column">
+
+        <p>
+					The purpose of these styles is to give a foundation of reusable styles
+					which can be overwritten in order to adjust them where required. Some
+					inline styles have been added, like colours and borders to help better
+					illustrate the core styles but everything related to layout or
+					vertical flow, for example, is done only with core styles. Normally
+					local styles or a utility like Tailwind would make these adjustments.
+				</p>
+
+        <p>
+					If you have a short page (where the footer doesn't reach the bottom of
+					the window, add the <code>.ians-fix-short</code> class to the
+					<code>body</code> tag and remove the ScrollToTop component.
+				</p>
+        <p>
+					This is a standard text column with <a href="#">linky text</a>,
+					<strong>bold</strong> and <em>italics</em>. Multiple paragraphs
+					inclided below to demonstrate vertical flow. All fonts are Roboto with
+					weights 300, <span style="font-weight: 400">400</span> and
+					<strong>700</strong>.
+				</p>
+
+        <blockquote>
+					This is a <strong>blockquote</strong> consectetur adipisicing elit.
+					Nulla delectus id voluptatum repellendus earum. Similique obcaecati
+					nemo earum, perferendis aut eveniet ad sapiente qui recusandae,
+					distinctio nostrum? Reprehenderit, repellat placeat.
+				</blockquote>
+        <p>
+					Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim
+					obcaecati, expedita maiores dolor molestiae aliquam veniam sapiente
+					voluptatem harum cupiditate. Ratione ab incidunt quidem odit aut,
+					maxime saepe. Voluptates, impedit!
+				</p>
+      </div>
+
+      <div class="ians-image-full">
+        <div class="ians-image-full-text-container">
+          <div>
+            <h2>Image background section</h2>
+            <p>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. A Linky
+							linky link link numquam voluptatem recusandae, sint est atque.
+							eius eligendi libero nulla qui vel veritatis.
+						</p>
+            <p>
+							Amet, autem nam sit hic explicabo beatae tenetur alias totam iste
+							omnis ipsam quas neque, nisi quis vitae excepturi aspernatur vel
+							accusamus.
+						</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ians-column">
+        <h2>Headers</h2>
+        <div>
+          <h1
+						style="
+							margin-bottom: 0.5rem;
+							margin-top: 0;
+							margin-right: 2rem;
+							display: inline-block;
+						"
+					>
+						h1
+					</h1>
+          <h2
+						style="
+							margin-bottom: 0.5rem;
+							margin-top: 0;
+							margin-right: 2rem;
+							display: inline-block;
+						"
+					>
+						h2
+					</h2>
+          <h3
+						style="
+							margin-bottom: 0.5rem;
+							margin-top: 0;
+							margin-right: 2rem;
+							display: inline-block;
+						"
+					>
+						h3
+					</h3>
+          <h4
+						style="
+							margin-bottom: 0.5rem;
+							margin-top: 0;
+							margin-right: 2rem;
+							display: inline-block;
+						"
+					>
+						h4
+					</h4>
+        </div>
+        <p>
+					Demonstration of semantic header use. H1 titles only appear once in
+					page. H2 headers such as the above start sections.
+				</p>
+        <p>
+					H3 is used as item titles as demonstrated below (includes
+					.ians-grid-3):
+				</p>
+
+        <h2 class="text-center">Definitions</h2>
+      </div>
+
+      <div class="ians-column-wide-4 ians-grid-3 ians-grid-spaced">
+        <div>
+          <h3>H3: Neutrality</h3>
+          <p>
+						In an industry that depends upon many different players working
+						together, we have an unrivalled track record of bringing the
+						aviation community together for the benefit of the entire European
+						ATM network.
+					</p>
+        </div>
+
+        <div>
+          <h3>H3: In-depth understanding</h3>
+          <p>
+						As we cover multiple domains and the whole life-cycle of the
+						evolution of technology, from concepts to detailed standards and
+						operations, we have an in-depth understanding of how everything fits
+						into the whole ATM environment.
+					</p>
+        </div>
+
+        <div>
+          <h3>H3: Data</h3>
+          <p>
+						We gather and share a wide range of data – statistics and forecasts
+						– that allow our stakeholders to have a complete picture of European
+						aviation performance and make informed decisions for the future.
+					</p>
+        </div>
+      </div>
+
+      <div class="ians-column">
+        <h4>h4</h4>
+        <p>h4: included just in case it is needed.</p>
+        <h2>Buttons</h2>
+        <button>This is a button</button>
+        <h2>Colours</h2>
+        <p>These colours can be applied to text and backgrounds.</p>
+        <div class="ians-grid-3">
+          <div
+						style="
+							min-height: 6rem;
+							background-color: var(--ians-colour-blue-light);
+						"
+					>
+						--ians-colour-blue-light
+					</div>
+
+          <div
+						style="
+							min-height: 6rem;
+							background-color: var(--ians-colour-blue-mid);
+							color: white;
+						"
+					>
+						--ians-colour-blue-mid
+					</div>
+
+          <div
+						style="
+							min-height: 6rem;
+							background-color: var(--ians-colour-blue-dark);
+							color: white;
+						"
+					>
+						--ians-colour-blue-dark
+					</div>
+
+          <div
+						style="
+							min-height: 6rem;
+							background-color: var(--ians-colour-grey-light);
+						"
+					>
+						--ians-colour-grey-light
+					</div>
+
+          <div
+						style="
+							min-height: 6rem;
+							background-color: var(--ians-colour-grey-mid);
+						"
+					>
+						--ians-colour-grey-mid
+					</div>
+
+          <div
+						style="
+							min-height: 6rem;
+							background-color: var(--ians-colour-grey-dark);
+							color: white;
+						"
+					>
+						--ians-colour-grey-dark
+					</div>
+
+          <div
+						style="
+							min-height: 6rem;
+							background-color: var(--ians-colour-highlight-light);
+						"
+					>
+						--ians-colour-highlight-light
+					</div>
+
+          <div
+						style="
+							min-height: 6rem;
+							background-color: var(--ians-colour-highlight-mid);
+						"
+					>
+						--ians-colour-highlight-mid
+					</div>
+
+          <div
+						style="
+							min-height: 6rem;
+							background-color: var(--ians-colour-highlight-dark);
+						"
+					>
+						--ians-colour-highlight-dark
+					</div>
+        </div>
+        <h2>Layouts</h2>
+        <p>
+					Layouts restrict width horizontally and adjust responsively. These are
+					default widths but we are not restricted to them, they can be any
+					width. The default widths speed up development and aid consistency but
+					the ability to have any width means we can adapt to content where
+					needed instead of adapting content to widths.
+				</p>
+      </div>
+
+      <div
+				class="ians-column-wide-1 ians-bg-grey-light"
+				style="min-height: 20vh; display: flex; flex-flow: column"
+			>
+        <div
+					class="ians-bg-grey-mid"
+					style="
+						border-bottom: 1px solid var(--ians-colour-grey-light);
+						flex-grow: 1;
+					"
+				>
+					.ians-column-wide-1
+				</div>
+      </div>
+
+      <div
+				class="ians-column-wide-2 ians-bg-grey-light"
+				style="min-height: 20vh; display: flex; flex-flow: column"
+			>
+        <div
+					class="ians-bg-grey-mid"
+					style="
+						border-bottom: 1px solid var(--ians-colour-grey-light);
+						flex-grow: 1;
+					"
+				>
+					.ians-column-wide-2
+				</div>
+      </div>
+
+      <div
+				class="ians-column-wide-3 ians-bg-grey-light"
+				style="min-height: 20vh; display: flex; flex-flow: column"
+			>
+        <div
+					class="ians-bg-grey-mid"
+					style="
+						border-bottom: 1px solid var(--ians-colour-grey-light);
+						flex-grow: 1;
+					"
+				>
+					.ians-column-wide-3
+				</div>
+      </div>
+
+      <div
+				class="ians-column-wide-4 ians-bg-grey-light"
+				style="min-height: 20vh; display: flex; flex-flow: column"
+			>
+        <div class="ians-bg-grey-mid" style="flex-grow: 1">
+					.ians-column-wide-4
+				</div>
+      </div>
+
+      <div class="ians-column">
+        <p>This is a double column layout:</p>
+      </div>
+
+      <div style="background-color: var(--ians-colour-grey-light)">
+        <div class="ians-column-double ians-grid-2">
+          <div>
+            <p>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex
+							voluptas officiis quisquam sapiente accusantium cumque, unde
+							doloribus ipsam numquam quod natus id veritatis sed porro esse
+							repellat ut facilis. Omnis!
+						</p>
+            <p>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
+							fugit fuga quasi. Ea aliquid, itaque mollitia, natus eos a soluta
+							hic totam inventore repellat labore voluptatibus nisi omnis
+							repellendus deleniti.
+						</p>
+          </div>
+          <div>
+            <p>
+							Lots of people are experiencing either redundancies or work issues
+							at the moment and although, at the time of writing, we are in a
+							global pandemic: now is a great time to go freelance.
+						</p>
+            <p>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
+							fugit fuga quasi. Ea aliquid, itaque mollitia, natus eos a soluta
+							hic totam inventore repellat labore voluptatibus nisi omnis
+							repellendus deleniti.
+						</p>
+            <p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+							Temporibus neque rem distinctio voluptatum impedit magnam atque
+							odit, mollitia eos accusantium. Perferendis impedit commodi
+							eveniet officiis quos, neque deleniti facilis nostrum?
+						</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ians-column">
+        <h2>Grids</h2>
+        <p>
+					Basic Grids help layout groups of content in a way that adapts to
+					screen sizes.
+				</p>
+      </div>
+
+      <div class="ians-column-wide-2 ians-grid-2">
+        <div
+					class="ians-bg-grey-mid"
+					style="min-height: 3rem; border: 1px solid white"
+				>
+					.ians-grid-2 item 1
+				</div>
+        <div
+					class="ians-bg-grey-mid"
+					style="min-height: 3rem; border: 1px solid white"
+				>
+					.ians-grid-2 item 2
+				</div>
+      </div>
+
+      <div class="ians-column-wide-3 ians-grid-3" style="margin-top: 1rem">
+        <div
+					class="ians-bg-grey-mid"
+					style="min-height: 3rem; border: 1px solid white"
+				>
+					.ians-grid-3 item 1
+				</div>
+        <div
+					class="ians-bg-grey-mid"
+					style="
+						min-height: 3rem;
+
+						border: 1px solid white;
+					"
+				>
+					.ians-grid-3 item 2
+				</div>
+        <div
+					class="ians-bg-grey-mid"
+					style="
+						min-height: 3rem;
+
+						border: 1px solid white;
+					"
+				>
+					.ians-grid-3 item 3
+				</div>
+      </div>
+
+      <div class="ians-column-wide-4 ians-grid-4" style="margin-top: 1rem">
+        <div
+					class="ians-bg-grey-mid"
+					style="
+						min-height: 3rem;
+
+						border: 1px solid white;
+					"
+				>
+					.ians-grid-4 item 1
+				</div>
+        <div
+					class="ians-bg-grey-mid"
+					style="
+						min-height: 3rem;
+
+						border: 1px solid white;
+					"
+				>
+					.ians-grid-4 item 2
+				</div>
+        <div
+					class="ians-bg-grey-mid"
+					style="
+						min-height: 3rem;
+
+						border: 1px solid white;
+					"
+				>
+					.ians-grid-4 item 3
+				</div>
+        <div
+					class="ians-bg-grey-mid"
+					style="
+						min-height: 3rem;
+
+						border: 1px solid white;
+					"
+				>
+					.ians-grid-4 item 4
+				</div>
+      </div>
+
+      <div class="ians-grid-5" style="margin-top: 1rem; margin-bottom: 3rem">
+        <div
+					class="ians-bg-grey-mid"
+					style="
+						min-height: 3rem;
+
+						border: 1px solid white;
+					"
+				>
+					.ians-grid-5 item 1
+				</div>
+        <div
+					class="ians-bg-grey-mid"
+					style="
+						min-height: 3rem;
+
+						border: 1px solid white;
+					"
+				>
+					.ians-grid-5 item 2
+				</div>
+        <div
+					class="ians-bg-grey-mid"
+					style="
+						min-height: 3rem;
+
+						border: 1px solid white;
+					"
+				>
+					.ians-grid-5 item 3
+				</div>
+        <div
+					class="ians-bg-grey-mid"
+					style="
+						min-height: 3rem;
+
+						border: 1px solid white;
+					"
+				>
+					.ians-grid-5 item 4
+				</div>
+        <div
+					class="ians-bg-grey-mid"
+					style="
+						min-height: 3rem;
+
+						border: 1px solid white;
+					"
+				>
+					.ians-grid-5 item 5
+				</div>
+      </div>
+
+      <div
+				class="ians-bg-blue-dark"
+				style="padding-top: 3rem; padding-bottom: 3rem"
+			>
+        <div
+					class="ians-column-wide-3 ians-grid-2"
+					style="grid-column-gap: 3em; grid-row-gap: 3em"
+				>
+          <div class="order-1">
+            <p
+							class="ians-text-highlight-light uppercase text-sm"
+							style="text-align: right"
+						>
+							Sub section note text
+						</p>
+            <p class="text-3xl">
+							Dark section with 2 x grid. This is section 'splash' text.
+						</p>
+            <p>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
+							perferendis quod suscipit illum tenetur odit dolore
+							<strong>similique nam earum quas</strong>, repudiandae sapiente
+							ullam rem delectus <a href="#">veniam praesentium</a> ducimus cum
+							aspernatur!
+						</p>
+            <p>
+							Lorem ipsum dolor hic eos ipsa ex exercitationem repellat,
+							accusantium ad assumenda dolore. sit amet consectetur adipisicing
+							elit.
+							<strong>
+								elit. Vitae necessitatibus iure cum quo error aliquid saepe
+								cumque atque officiis fuga elit. </strong
+							>, sit amet consectetur adipisicing elit. Vitae necessitatibus
+							iure cum quo error aliquid saepe cumque atque officiis fuga,
+						</p>
+          </div>
+          <img
+						src="images/about-us-what-we-do_1.png"
+						alt=""
+						style="
+							max-height: 70vh;
+							display: block;
+							margin: 0 auto;
+							padding-top: 2rem;
+						"
+					/>
+        </div>
+      </div>
+
+      <div class="ians-column">
+        <h2>Video</h2>
+        <p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
+					fugit fuga quasi. Ea aliquid, itaque mollitia, natus eos a soluta hic
+					totam inventore repellat labore voluptatibus nisi omnis repellendus
+					deleniti.
+				</p>
+      </div>
+      <div class="ians-column-wide-2">{% vimeo "563168061" %}</div>
+      <div class="ians-column" style="margin-bottom: 3rem">
+        <p>Filler text between large sections as is likely.</p>
+        <p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
+					fugit fuga quasi. Ea aliquid, itaque mollitia, natus eos a soluta hic
+					totam inventore repellat labore voluptatibus nisi omnis repellendus
+					deleniti.
+				</p>
+        <p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
+					fugit fuga quasi. Ea aliquid, itaque mollitia, natus eos a soluta hic
+					totam inventore repellat labore voluptatibus nisi omnis repellendus
+					deleniti.
+				</p>
+        <p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
+					fugit fuga quasi. Ea aliquid, itaque mollitia, natus eos a soluta hic
+					totam inventore repellat labore voluptatibus nisi omnis repellendus
+					deleniti.
+				</p>
+        <p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
+					fugit fuga quasi. Ea aliquid, itaque mollitia, natus eos a soluta hic
+					totam inventore repellat labore voluptatibus nisi omnis repellendus
+					deleniti.
+				</p>
+        <p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
+					fugit fuga quasi. Ea aliquid, itaque mollitia, natus eos a soluta hic
+					totam inventore repellat labore voluptatibus nisi omnis repellendus
+					deleniti.
+				</p>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; EUROCONTROL</p>
+    </footer>
+  </body>
+</html>

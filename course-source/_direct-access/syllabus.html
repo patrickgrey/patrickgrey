@@ -1,0 +1,198 @@
+---
+permalink: "_direct-access/{{metadata.courseCode}}_syllabus.html"
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{{ metadata.courseTitle }} syllabus</title>
+    <style>
+      {% coreStyles %}
+    </style>
+    <link rel="stylesheet" href="styles.css"/>
+  </head>
+  <body class="relative">
+    <header
+			class="ians-welcome-page-title"
+			style="background-image: linear-gradient( 
+        45deg
+        , rgba(0, 51, 102, 1) 0%, rgba(0, 51, 102, 0.5) 100% ),url({{ metadata.syllabusImageURL }}); text-shadow: 1px 1px 0 black; min-height: 45vh;"
+		>
+      <div class="ians-column-wide-1 ians-grid-2 ians-grid-spaced">
+        <h1>{{ metadata.courseTitle }}</h1>
+      </div>
+    </header>
+
+    <main class="ians-column">
+      <!-- <p>Sticky with folder names?</p> -->
+      {% if metadata.syllabusHasRegisterButton %}
+        <!-- Registration button - remove if not necessary -->
+        <div class="course-registration">
+          <!-- set the correct module code at the end of the URL below -->
+          <a
+					class="course-registration-button"
+					href="/CourseRequest-catalogue.asp?coursecode={{metadata.courseCode}}"
+					>Register now to get the certificate</a
+				>
+        </div>
+      {% endif %}
+      <div class="ians-syllabus">
+        <!-- Syllabus -->
+        <ul>
+          {% set currentDepth = 0 %}
+          {% for item in metadata.syllabusContent %}
+            <li>
+
+              {% if item.depth > currentDepth %}
+
+                {% for i in range(0, item.depth - currentDepth) -%}
+                  <ul>
+                    <li>
+                    {%- endfor %}
+
+                  {% elseif item.depth < currentDepth %}
+
+                    {% for i in range(0, currentDepth - item.depth) -%}
+                  </ul>
+                </li>
+              {%- endfor %}
+
+            {% endif %}
+
+            {% set currentDepth = item.depth %}
+
+            {% if item.type === "FOLDER" %}
+              <h{{ item.depth + 2 }}>{{ item.title }}</h{{ item.depth + 2 }}>
+            {% else %}
+              {% if item.link %}
+                <a href="/ilp/customs/Reports/AdminFunctions/Execute/Goto/{{ item.link }}" class="ians-icon ians-icon-{{ item.type | lower }}">
+                  {{ item.title }}
+                </a>
+              {% else %}
+                <p class="ians-icon ians-icon-{{ item.type | lower }} ians-unavailable">
+                  {{ item.title }}
+                </p>
+              {% endif %}
+            {% endif %}
+          </li>
+
+        {% endfor %}
+      </ul>
+
+      {# <p>End of dynamic links</p>
+				<ul>
+					<li>
+						<a href="placeholder.html" class="ians-icon ians-icon-wbt">
+							Top level media item
+						</a>
+					</li>
+					<li>
+						<a href="placeholder.html" class="ians-icon ians-icon-wbt">
+							Top level media item with long title. Lorem ipsum dolor sit amet,
+							consectetur adipiscing elit. Maecenas placerat, enim lacinia
+							dapibus vehicula, urna mi interdum dolor, quis fermentum dui elit
+							nec nisi.
+						</a>
+					</li>
+					<li>
+						<p
+							class="ians-icon ians-icon-wbt ians-unavailable"
+						>
+							Title for topic not available in direct access
+					</p>
+					</li>
+					<li>
+						<h2>Level 1 folder title</h2>
+						<ul>
+							<li>
+								<a href="placeholder.html">
+									<i class="ians-icon ians-icon-wbt"></i>
+									<span>Media item in a folder</span>
+								</a>
+							</li>
+							<li>
+								<h3>Level 2 folder title</h3>
+								<ul>
+									<li>
+										<a href="placeholder.html">
+											<i class="ians-icon ians-icon-wbt"></i>
+											<span>Media item in a level 2 folder</span>
+										</a>
+									</li>
+									<li>
+										<a class="da-unavailable">
+											<i class="ians-icon ians-icon-wbt"></i>
+											<span>Media item in a level 2 folder</span>
+										</a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<a href="placeholder.html"  class="ians-icon ians-icon-wbt">
+									Media item in a folder
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<h2>Media types</h2>
+						<ul>
+							<li>
+								<a
+									href="/clix/data/wbt/decompressed/examples_5229258/index.html"
+									class="ians-icon ians-icon-wbt"
+									>WBT</a
+								>
+							</li>
+							<li>
+								<a
+									href="https://www.youtube.com/embed/vDu914Z0r3M?rel=0&showinfo=0"  class="ians-icon ians-icon-video"
+								>
+									Video</span>
+								</a>
+							</li>
+							<li>
+								<a href="http://www.skybrary.aero"  class="ians-icon ians-icon-link" target="_blank">
+									Link
+								</a>
+							</li>
+							<li>
+								<a href="placeholder.html"  class="ians-icon ians-icon-test">
+									 Assessment
+								</a>
+							</li>
+							<li>
+								<a href="placeholder.html"  class="ians-icon ians-icon-file">
+									 File
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="placeholder.html"  class="ians-icon ians-icon-wbt">
+							Top level media item
+						</a>
+					</li>
+				</ul> #}
+    </div>
+    {% if metadata.syllabusHasRegisterButton %}
+      <!-- Registration button - remove if not necessary -->
+      <div class="course-registration">
+        <!-- set the correct module code at the end of the URL below -->
+        <a
+					class="course-registration-button"
+					href="/CourseRequest-catalogue.asp?coursecode={{metadata.courseCode}}"
+					>Register now to get the certificate</a
+				>
+      </div>
+    {% endif %}
+  </main>
+  <footer>
+    <p>&copy; EUROCONTROL</p>
+  </footer>
+
+</body>
+</html>

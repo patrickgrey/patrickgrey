@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{{ title or metadata.title }}</title>
+    <script>
+      document.documentElement.className = 'js';
+    </script>
+    <meta name="description" content="{{ description or metadata.description }}">
+    <!-- Identify the software used to build the document (i.e. - WordPress, Dreamweaver) -->
+    <meta name="generator" content="11ty">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@400;700&family=Overpass:ital,wght@0,400;0,900;1,400&display=swap" rel="stylesheet">
+    <style>
+      {% coreStyles %}
+    </style>
+    {% if pageCSS %}
+      <link rel="preload" media="all" href="{{pageCSS}}.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+      <noscript><link rel="stylesheet" href="{{pageCSS}}.css"></noscript>
+    {% endif %}
+
+    {% if pageJS %}
+      <script defer src="{{ pageJS }}.js"></script>
+    {% endif %}
+  </head>
+
+  <body>
+
+    {# <a class="pg-skip-link" href="#main-content">Skip to content</a> #}
+
+    <article>
+      <header>
+        <p class="pg-home">
+          <a href="{{ '/' | url }}">{{ metadata.title }}</a>
+        </p>
+
+        {#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
+        {# <ul class="nav">
+          {%- for entry in collections.all | eleventyNavigation %}
+            <li class="nav-item{% if entry.url == page.url %} nav-item-active{% endif %}">
+              <a href="{{ entry.url | url }}">{{ entry.title }}</a>
+            </li>
+          {%- endfor %}
+        </ul> #}
+      </header>
+
+      <main id="pg-main-content" {% if templateClass %} class="{{ templateClass }}"{% endif %}>
+
+        {{ content | safe }}
+
+      </main>
+
+      <footer>
+        <div>&copy; Rising Sky</di>
+      </footer>
+    </article>
+
+  </body>
+</html>

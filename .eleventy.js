@@ -1,139 +1,156 @@
+require("dotenv").config();
+const path = require("path");
+const Image = require("@11ty/eleventy-img");
 const fs = require("fs");
+const CleanCSS = require("clean-css");
 
-const { DateTime } = require("luxon");
-const markdownIt = require("markdown-it");
-const markdownItAnchor = require("markdown-it-anchor");
+const source = process.env.COURSE_INPUT_FOLDER || "course-source";
+const publish = process.env.COURSE_PRODUCTION_FOLDER || "course-publish";
 
-const pluginRss = require("@11ty/eleventy-plugin-rss");
-const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const pluginNavigation = require("@11ty/eleventy-navigation");
-const EleventyVitePlugin = require("@11ty/eleventy-plugin-vite");
+function coreStyles() {
+  let code = fs.readFileSync(
+    `./${publish}/_shared/_styleguide/pg-styleguide.css`,
+    "utf8"
+  );
+  code += fs.readFileSync(`./${publish}/_shared/_shared.css`, "utf8");
+  const minified = new CleanCSS({}).minify(code).styles;
+  return minified;
+}
+
+async function imageShortcode(src, alt, cls, sizes, widths, formats) {
+  const imagePath = path.dirname(src);
+  const urlPath = imagePath + "/";
+  const outputDir = "./" + publish + this.page.url + imagePath + "/";
+  const imageSource = "./" + source + this.page.url + src;
+  const sizesString = sizes || `(max-width: 2400px) 100vw, 2400px`;
+
+  let metadata = await Image(imageSource, {
+    widths: widths || [320, 640, 960, 1200, 1800, 2400],
+    formats: formats || ["avif", "webp", "jpeg"],
+    urlPath: urlPath,
+    outputDir: outputDir,
+  });
+
+  let imageAttributes = {
+    class: cls || "",
+    alt,
+    sizes: sizesString,
+    loading: "lazy",
+    decoding: "async",
+  };
+
+  return Image.generateHTML(metadata, imageAttributes);
+}
 
 module.exports = function (eleventyConfig) {
-  // the default is "passthrough"
-  eleventyConfig.setServerPassthroughCopyBehavior("copy");
-  // Copy the `img` and `css` folders to the output
-  eleventyConfig.addPassthroughCopy("_src/img");
-  eleventyConfig.addPassthroughCopy("_src/css");
-  eleventyConfig.addPassthroughCopy("_src/fonts");
+  eleventyConfig.setDataDeepMerge(true);
 
-  // Add plugins
-  eleventyConfig.addPlugin(pluginRss);
-  eleventyConfig.addPlugin(pluginSyntaxHighlight);
-  eleventyConfig.addPlugin(pluginNavigation);
-  eleventyConfig.addPlugin(EleventyVitePlugin);
+  eleventyConfig.addPassthroughCopy(`${source}/index.css`);
+  // Shortcodes take care of copying images.
+  // What about images for animations???? Shortcode for animations which deal with this?
+  // Solution: keep copying images and it is up to developers to optimise for the largest size image.
 
-  eleventyConfig.addFilter("readableDate", dateObj => {
-    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat("dd LLL yyyy");
+  eleventyConfig.addPassthroughCopy(`${source}/**/*.jpg`);
+  eleventyConfig.addPassthroughCopy(`${source}/**/*.jpeg`);
+  eleventyConfig.addPassthroughCopy(`${source}/**/*.png`);
+  eleventyConfig.addPassthroughCopy(`${source}/**/*.svg`);
+  eleventyConfig.addPassthroughCopy(`${source}/**/*.webp`);
+  eleventyConfig.addPassthroughCopy(`${source}/**/*.avif`);
+  eleventyConfig.addPassthroughCopy(`${source}/**/*.mp3`);
+  eleventyConfig.addPassthroughCopy(`${source}/**/*.pdf`);
+
+  // eleventyConfig.addWatchTarget(`./${source}/index.css`);
+  // eleventyConfig.addWatchTarget(`./${source}/**/*.css`);
+  // eleventyConfig.addWatchTarget(`./${source}/**/*.js`);
+
+  eleventyConfig.setWatchJavaScriptDependencies(false);
+
+  // Browsersync Overrides
+  eleventyConfig.setBrowserSyncConfig({
+    files: [`${publish}/**/*.css`, `${publish}/**/*.js`],
+    ui: false,
+    reloadOnRestart: true,
+    open: false,
+    ghostMode: false,
   });
 
-  // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
-  eleventyConfig.addFilter('htmlDateString', (dateObj) => {
-    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('yyyy-LL-dd');
+  // SHORTCODES
+
+  // {% svgIcon 'url-to-svg.svg' %}
+  eleventyConfig.addNunjucksAsyncShortcode('svgIcon', async (src, alt, sizes) => {
+    let metadata = await Image(src, {
+      formats: ['svg'],
+      dryRun: true,
+    })
+    return metadata.svg[0].buffer.toString()
   });
 
-  // Get the first `n` elements of a collection.
-  eleventyConfig.addFilter("head", (array, n) => {
-    if (!Array.isArray(array) || array.length === 0) {
-      return [];
+
+  eleventyConfig.addNunjucksShortcode("test", function (returnString) {
+    const imagePath = path.dirname(returnString);
+    return "." + this.page.url + imagePath + "/";
+  });
+
+  eleventyConfig.addNunjucksAsyncShortcode("image", imageShortcode);
+  eleventyConfig.addNunjucksShortcode("coreStyles", coreStyles);
+
+  eleventyConfig.addNunjucksShortcode("video", function (id) {
+    return `<div class="ians-video-16-9">
+		<iframe
+			src="https://www.youtube.com/embed/${id}?rel=0&showinfo=0"
+			loading="lazy"
+			frameborder="0"
+			allowfullscreen
+			title="Youtube video"
+		></iframe>
+	</div>`;
+  });
+
+  eleventyConfig.addNunjucksShortcode("vimeo", function (id) {
+    return `<div class="ians-video-16-9">
+		<iframe
+			src="https://player.vimeo.com/video/${id}"
+			loading="lazy"
+			width="640"
+						height="564"
+						frameborder="0"
+						allow="autoplay; fullscreen"
+						allowfullscreen
+		></iframe>
+	</div>`;
+  });
+
+  eleventyConfig.addNunjucksShortcode("lmsBanner", function () {
+    let html = ``;
+    if (process.env.NODE_ENV === "development") {
+      html = `<div class="ians-lms-banner">
+		<a href="/index.html">&lt;&lt; Back</a>
+	</div>`;
     }
-    if (n < 0) {
-      return array.slice(n);
-    }
-
-    return array.slice(0, n);
+    return html;
   });
-
-  // Return the smallest number argument
-  eleventyConfig.addFilter("min", (...numbers) => {
-    return Math.min.apply(null, numbers);
-  });
-
-  function filterTagList(tags) {
-    return (tags || []).filter(tag => ["all", "nav", "post", "posts"].indexOf(tag) === -1);
-  }
-
-  eleventyConfig.addFilter("filterTagList", filterTagList)
-
-  // Create an array of all tags
-  eleventyConfig.addCollection("tagList", function (collection) {
-    let tagSet = new Set();
-    collection.getAll().forEach(item => {
-      (item.data.tags || []).forEach(tag => tagSet.add(tag));
-    });
-
-    return filterTagList([...tagSet]);
-  });
-
-  // Customize Markdown library and settings:
-  let markdownLibrary = markdownIt({
-    html: true,
-    linkify: true
-  }).use(markdownItAnchor, {
-    permalink: markdownItAnchor.permalink.ariaHidden({
-      placement: "after",
-      class: "direct-link",
-      symbol: "#"
-    }),
-    level: [1, 2, 3, 4],
-    slugify: eleventyConfig.getFilter("slugify")
-  });
-  eleventyConfig.setLibrary("md", markdownLibrary);
-
-  // Override Browsersync defaults (used only with --serve)
-  // eleventyConfig.setBrowserSyncConfig({
-  //   callbacks: {
-  //     ready: function (err, browserSync) {
-  //       const content_404 = fs.readFileSync('_site/404.html');
-
-  //       browserSync.addMiddleware("*", (req, res) => {
-  //         // Provides the 404 content without redirect.
-  //         res.writeHead(404, { "Content-Type": "text/html; charset=UTF-8" });
-  //         res.write(content_404);
-  //         res.end();
-  //       });
-  //     },
-  //   },
-  //   ui: false,
-  //   ghostMode: false
-  // });
 
   return {
-    // Control which files Eleventy will process
-    // e.g.: *.md, *.njk, *.html, *.liquid
-    templateFormats: [
-      "md",
-      "njk",
-      "html",
-      "liquid"
-    ],
+    templateFormats: ["njk", "html"],
 
-    // Pre-process *.md files with: (default: `liquid`)
-    markdownTemplateEngine: "njk",
-
-    // Pre-process *.html files with: (default: `liquid`)
-    htmlTemplateEngine: "njk",
-
-    // -----------------------------------------------------------------
-    // If your site deploys to a subdirectory, change `pathPrefix`.
-    // Don’t worry about leading and trailing slashes, we normalize these.
+    // If your site lives in a different subdirectory, change this.
+    // Leading or trailing slashes are all normalized away, so don’t worry about those.
 
     // If you don’t have a subdirectory, use "" or "/" (they do the same thing)
     // This is only used for link URLs (it does not affect your file structure)
     // Best paired with the `url` filter: https://www.11ty.dev/docs/filters/url/
 
     // You can also pass this in on the command line using `--pathprefix`
+    // pathPrefix: "/",
+    htmlTemplateEngine: "njk",
+    dataTemplateEngine: "njk",
 
-    // Optional (default is shown)
-    pathPrefix: "/",
-    // -----------------------------------------------------------------
-
-    // These are all optional (defaults are shown):
+    // These are all optional, defaults are shown:
     dir: {
-      input: "_src",
-      includes: "_includes",
-      data: "_data",
-      output: "_site"
-    }
+      input: source,
+      output: publish,
+      data: "../_utilities/_data",
+      includes: "../_utilities/_includes",
+    },
   };
 };
