@@ -7,5 +7,10 @@
 .pg-canvas {
   width: 75vmin;
   height: 75vmin;
-  background: hsl(0, 0%, 100%);
+  background: black;
+}
+
+.pg-canvas-02 ellipse {
+  /* fill: red; */
+  filter: url(#glow);
 }
