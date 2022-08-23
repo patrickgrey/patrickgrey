@@ -1,0 +1,11 @@
+.pg-canvas-container {
+  height: 100vh;
+  display: grid;
+  place-items: start center;
+}
+
+.pg-canvas {
+  width: 75vmin;
+  height: 75vmin;
+  background: hsl(0, 0%, 100%);
+}

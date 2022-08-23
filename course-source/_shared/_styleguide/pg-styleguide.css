@@ -1,3 +1,28 @@
+/* Defaults */
+:root {
+  --font-family: "Overpass", sans-serif;
+  --font-family-monospace: "Overpass Mono", Consolas, Menlo, Monaco,
+    Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter,
+    DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L,
+    Courier New, Courier, monospace;
+}
+
+/* Theme colors */
+:root {
+  --pg-color-gray-90: #333;
+
+  --pg-background-color: hsl(45, 43%, 89%);
+
+  --text-color: var(--pg-color-gray-90);
+  --text-color-link: #082840;
+  --text-color-link-visited: #17050f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+  }
+}
+
 /* // https://piccalil.li/blog/a-modern-css-reset */
 
 /* Box sizing rules */
@@ -82,31 +107,6 @@ body > article {
   grid-template-rows: auto 1fr auto;
 }
 
-/* Defaults */
-:root {
-  --font-family: "Overpass", sans-serif;
-  --font-family-monospace: "Overpass Mono", Consolas, Menlo, Monaco,
-    Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter,
-    DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L,
-    Courier New, Courier, monospace;
-}
-
-/* Theme colors */
-:root {
-  --pg-color-gray-90: #333;
-
-  --pg-background-color: hsl(45, 43%, 89%);
-
-  --text-color: var(--pg-color-gray-90);
-  --text-color-link: #082840;
-  --text-color-link-visited: #17050f;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-  }
-}
-
 /* Global stylesheet */
 
 html,
@@ -128,8 +128,23 @@ h6 {
   font-family: var(--font-family-monospace);
 }
 
+h2 {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
 header {
   position: relative;
+}
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  color: var(--pg-background-color);
+  background-color: var(--pg-color-gray-90);
+  padding: 10vmin 1rem;
 }
 
 /* https://dev.to/afif/how-to-correctly-position-rotated-text-using-css-1gjc */
