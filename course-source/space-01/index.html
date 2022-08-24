@@ -3,13 +3,18 @@ layout: layouts/base.njk
 title: space-01
 pageCSS: styles
 pageJS: main
+tags: generative-art
 ---
+<p>
+  <a href="#pgNotes">Notes ↧</a>
+</p>
 <h2>Space 01.1</h2>
 <div class="pg-canvas-container">
   <svg class="pg-canvas pg-canvas-01" viewBox="0 0 200 200"></svg>
 </div>
 
 <h2>Space 01.2</h2>
+
 <p>Glow added but not visible and being clipped around ellipse boundary.</p>
 {# Try a light blue glow coming in. #}
 <div class="pg-canvas-container">
@@ -40,3 +45,16 @@ pageJS: main
 <div class="pg-canvas-container">
   <svg class="pg-canvas pg-canvas-04" viewBox="0 0 200 200"></svg>
 </div>
+
+<h2 id="pgNotes">Notes</h2>
+<p>Fix CSS globals</p>
+<p>Flex the containers</p>
+<p>
+  <strike>Drop shadow on canvas</strike>
+</p>
+<p>Put titles and notes underneath for alignment using grid order.</p>
+<p>Perf so lazy load</p>
+<p>Show example images based on</p>
+<p>#use directive? for reuse for performance</p>
+<p>Check NASA photos</p>
+<p>Increase viewbox size so can use integers for sizes for performance.</p>
