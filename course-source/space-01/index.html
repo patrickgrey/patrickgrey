@@ -8,42 +8,51 @@ tags: generative-art
 <p>
   <a href="#pgNotes">Notes ↧</a>
 </p>
-<h2>Space 01.1</h2>
-<div class="pg-canvas-container">
-  <svg class="pg-canvas pg-canvas-01" viewBox="0 0 200 200"></svg>
+
+<div class="pg-canvas-group-container pg-flow">
+  <h2>Space 01.1</h2>
+  <div class="pg-canvas-container">
+    <svg class="pg-canvas pg-canvas-01" viewBox="0 0 200 200"></svg>
+  </div>
 </div>
 
-<h2>Space 01.2</h2>
+<div class="pg-canvas-group-container pg-flow">
+  <h2>Space 01.2</h2>
 
-<p>Glow added but not visible and being clipped around ellipse boundary.</p>
-{# Try a light blue glow coming in. #}
-<div class="pg-canvas-container">
-  <svg class="pg-canvas pg-canvas-02" viewBox="0 0 200 200">
-    <defs>
-      <!-- a transparent glow that takes on the colour of the object it's applied to -->
-      <filter id="glow">
-        <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
-        <feMerge>
-          <feMergeNode in="coloredBlur"/>
-          <feMergeNode in="SourceGraphic"/>
-        </feMerge>
-      </filter>
+  {# Try a light blue glow coming in. #}
+  <div class="pg-canvas-container">
+    <svg class="pg-canvas pg-canvas-02" viewBox="0 0 200 200">
+      <defs>
+        <!-- a transparent glow that takes on the colour of the object it's applied to -->
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
 
-    </defs>
+      </defs>
 
-  </svg>
+    </svg>
+  </div>
+  <p>Glow added but not visible and being clipped around ellipse boundary.</p>
 </div>
 
-<h2>Space 01.3</h2>
-<p>Seeing if more smaller stars will create glow effect. Maybe many very small then a cycle of 1000 larger?</p>
-<div class="pg-canvas-container">
-  <svg class="pg-canvas pg-canvas-03" viewBox="0 0 200 200"></svg>
+<div class="pg-canvas-group-container pg-flow">
+  <h2>Space 01.3</h2>
+  <div class="pg-canvas-container">
+    <svg class="pg-canvas pg-canvas-03" viewBox="0 0 200 200"></svg>
+  </div>
+  <p>Seeing if more smaller stars will create glow effect. Maybe many very small then a cycle of 1000 larger?</p>
 </div>
 
-<h2>Space 01.4</h2>
-<p>As above but maybe some opacity. Getting there after playing with the numbers. Would like some glo tho...</p>
-<div class="pg-canvas-container">
-  <svg class="pg-canvas pg-canvas-04" viewBox="0 0 200 200"></svg>
+<div class="pg-canvas-group-container pg-flow">
+  <h2>Space 01.4</h2>
+  <div class="pg-canvas-container">
+    <svg class="pg-canvas pg-canvas-04" viewBox="0 0 200 200"></svg>
+  </div>
+  <p>As above but maybe some opacity. Getting there after playing with the numbers. Would like some glo tho...</p>
 </div>
 
 <h2 id="pgNotes">Notes</h2>

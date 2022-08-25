@@ -8,12 +8,18 @@ const source = process.env.COURSE_INPUT_FOLDER || "course-source";
 const publish = process.env.COURSE_PRODUCTION_FOLDER || "course-publish";
 
 function coreStyles() {
-  let code = fs.readFileSync(
-    `./${publish}/_shared/_styleguide/pg-styleguide.css`,
-    "utf8"
-  );
-  code += fs.readFileSync(`./${publish}/_shared/_shared.css`, "utf8");
-  const minified = new CleanCSS({}).minify(code).styles;
+  let minified = `
+  <link rel="stylesheet" href="/_shared/_styleguide/pg-styleguide.css">
+  <link rel="stylesheet" href="/_shared/_shared.css">`;
+
+  if (process.env.NODE_ENV != "development") {
+    let code = fs.readFileSync(
+      `./${publish}/_shared/_styleguide/pg-styleguide.css`,
+      "utf8"
+    );
+    code += fs.readFileSync(`./${publish}/_shared/_shared.css`, "utf8");
+    minified = `<style>${new CleanCSS({}).minify(code).styles}</style>`;
+  }
   return minified;
 }
 
