@@ -10,7 +10,7 @@ const filteredTree = dirTree(source, {
   exclude: /_data/,
 });
 
-console.log("filteredTree", filteredTree);
+// console.log("filteredTree", filteredTree);
 
 // Recursive traverse object utility function.
 const traverse = function (o, fn, scope = []) {

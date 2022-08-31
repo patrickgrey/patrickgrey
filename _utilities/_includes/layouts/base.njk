@@ -29,23 +29,23 @@
 
     {# <a class="pg-skip-link" href="#main-content">Skip to content</a> #}
 
-    <article>
+    <div class="pg-page-stretch">
       <header>
         <p class="pg-home">
           <a href="{{ '/' | url }}">{{ metadata.title }}</a>
         </p>
       </header>
 
-      <main id="pg-main-content" class="pg-main pg-flow">
+      <main id="PgMain" class="flow">
 
         {{ content | safe }}
 
       </main>
 
       <footer>
-        <div>&copy; Patrick Grey</di>
+        <p>&copy; Patrick Grey</p>
       </footer>
-    </article>
+    </div>
 
   </body>
 </html>

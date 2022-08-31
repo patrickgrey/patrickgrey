@@ -1,16 +1,42 @@
-.pg-canvas-container {
-  /* height: 100vh; */
-  display: grid;
-  place-items: start center;
-}
-
 .pg-canvas {
   width: 75vmin;
   height: 75vmin;
+  margin: 0 auto;
+  display: block;
   background: black;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
     0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),
     0 16px 16px rgba(0, 0, 0, 0.12);
+}
+
+.pg-canvas-notes {
+  max-width: 75vmin;
+  margin-left: auto;
+  margin-right: auto;
+}
+.pg-canvas-notes summary {
+  cursor: pointer;
+}
+
+.pg-canvas-notes details > div {
+  background-color: red;
+  padding: 0.25rem;
+  background-color: #666;
+  color: white;
+  overflow-x: auto;
+}
+
+.pg-canvas-notes details > div > pre {
+  margin-bottom: 0;
+}
+
+.pg-canvas-notes p:first-child::before {
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-paint'  viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Crect x='5' y='3' width='14' height='6' rx='2' /%3E%3Cpath d='M19 6h1a2 2 0 0 1 2 2a5 5 0 0 1 -5 5l-5 0v2' /%3E%3Crect x='10' y='15' width='4' height='6' rx='1' /%3E%3C/svg%3E");
+  display: inline-block;
+  width: var(--size-step-1);
+  height: var(--size-step-1);
+  margin-right: var(--space-2xs);
+  vertical-align: top;
 }
 
 .pg-canvas-02 ellipse {
