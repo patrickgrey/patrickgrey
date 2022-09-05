@@ -9,6 +9,11 @@ import {
 var pageModule = (function () {
   var module = {};
   module.init = function () {
+
+    // document.addEventListener("click", function (event) {
+    //   console.log(event.target);
+    // })
+
     const svg1 = SVG(".pg-canvas-01");
     const svg2 = SVG(".pg-canvas-02");
     const svg3 = SVG(".pg-canvas-03");

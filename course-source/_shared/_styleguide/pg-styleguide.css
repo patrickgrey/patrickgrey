@@ -383,6 +383,16 @@ footer {
   background-color: var(--color-dark);
   padding: 10vmin 1rem;
   margin-top: 4rem;
+  border: 0.5rem solid transparent;
+  border-image: linear-gradient(
+    to bottom right,
+    #b827fc 0%,
+    #2c90fc 25%,
+    #b8fd33 50%,
+    #fec837 75%,
+    #fd1892 100%
+  );
+  border-image-slice: 1;
 }
 
 /*
@@ -563,15 +573,25 @@ I can have cross hatches at three corners plus the circle */
   white-space: nowrap;
   font-family: var(--font-family-monospace);
   font-size: clamp(1rem, 0.273rem + 3.64vw, 3rem);
+  font-size: clamp(1rem, 0.505rem + 2.47vw, 2.5rem);
   /* border-right: 1px solid #999; */
   border: 1px solid #999;
   /* display: none; */
 }
 
-@media screen and (min-width: 1190px) {
+main {
+  margin-top: 3rem;
+}
+
+@media screen and (min-width: 1290px) {
   .pg-home {
     transform: rotate(-90deg) translateX(-100%);
-    left: 1rem;
+    top: 2rem;
+    left: 2rem;
+  }
+
+  main {
+    margin-top: 0;
   }
 }
 
